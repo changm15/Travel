@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peru — Sept 2026</title>
+<meta name="description" content="Trip plan: Toronto to Lima, Cusco, the Inca Trail, and back.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦙</text></svg>">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <a class="back-link" href="../index.html">← All trips</a>
+    <p class="eyebrow">A trip we planned together</p>
+    <h1>Peru<span class="hero-sub">September 2026</span></h1>
+    <p class="hero-dates">Sep 2 – Sep 9 · Toronto → Lima → Cusco → Inca Trail → Lima → Toronto</p>
+    <div id="countdown" class="countdown" aria-live="polite" data-departure="2026-09-02T00:00:00"></div>
+  </div>
+  <div class="hero-snow" aria-hidden="true"></div>
+</header>
+
+<main>
+
+  <section class="route" aria-label="Route overview">
+    <div class="route-strip">
+      <span class="stop">YYZ<small>Toronto · Sep 2</small></span>
+      <span class="arrow">✈</span>
+      <span class="stop">LIM<small>Lima · Sep 2</small></span>
+      <span class="arrow">✈</span>
+      <span class="stop">CUZ<small>Cusco · Sep 3</small></span>
+      <span class="arrow">🥾</span>
+      <span class="stop">Inca Trail<small>Sep 5–6</small></span>
+      <span class="arrow">✈</span>
+      <span class="stop">LIM<small>Lima · Sep 7</small></span>
+      <span class="arrow">✈</span>
+      <span class="stop">YYZ<small>Toronto · Sep 9</small></span>
+    </div>
+  </section>
+
+  <section class="itinerary">
+    <h2>Day by day</h2>
+    <p class="trips-hint">Hover or tap a date to see that leg of the route on the map.</p>
+
+    <div class="itinerary-layout">
+
+      <div class="itinerary-map-wrap">
+        <div id="trip-map" class="trip-map" data-stops='[
+          {"label":"Toronto (YYZ)","lat":43.6777,"lng":-79.6248},
+          {"label":"Lima (LIM)","lat":-12.0219,"lng":-77.1143},
+          {"label":"Cusco (CUZ)","lat":-13.5319,"lng":-71.9675},
+          {"label":"Inca Trail","lat":-13.1631,"lng":-72.5450},
+          {"label":"Lima (LIM)","lat":-12.0219,"lng":-77.1143},
+          {"label":"Toronto (YYZ)","lat":43.6777,"lng":-79.6248}
+        ]'></div>
+        <p class="trip-map-hint">Click a pin to jump to that day.</p>
+      </div>
+
+      <ol class="legs">
+
+        <details class="leg" data-route="0,1">
+          <summary>
+            <span class="leg-date"><span class="leg-date-num">SEP 2</span><span class="leg-date-dow">Wed</span></span>
+            <span class="leg-city">✈️ Toronto → Lima</span>
+            <span class="leg-chevron" aria-hidden="true">›</span>
+          </summary>
+          <ul class="leg-highlights">
+            <li>Fly Toronto → Lima</li>
+            <li>Overnight near the airport</li>
+            <li>Explore a bit</li>
+          </ul>
+        </details>
+
+        <details class="leg" data-route="1,2">
+          <summary>
+            <span class="leg-date"><span class="leg-date-num">SEP 3–4</span><span class="leg-date-dow">Thu–Fri</span></span>
+            <span class="leg-city">🏔️ Cusco</span>
+            <span class="leg-chevron" aria-hidden="true">›</span>
+          </summary>
+          <ul class="leg-highlights">
+            <li>Fly Lima → Cusco</li>
+            <li>Acclimatize to the altitude</li>
+            <li>Explore Cusco</li>
+          </ul>
+        </details>
+
+        <details class="leg" data-route="2,3">
+          <summary>
+            <span class="leg-date"><span class="leg-date-num">SEP 5–6</span><span class="leg-date-dow">Sat–Sun</span></span>
+            <span class="leg-city">🥾 Inca Trail</span>
+            <span class="leg-chevron" aria-hidden="true">›</span>
+          </summary>
+          <ul class="leg-highlights">
+            <li>2-day Inca Trail hike</li>
+          </ul>
+        </details>
+
+        <details class="leg" data-route="3,4">
+          <summary>
+            <span class="leg-date"><span class="leg-date-num">SEP 7–8</span><span class="leg-date-dow">Mon–Tue</span></span>
+            <span class="leg-city">🌇 Lima</span>
+            <span class="leg-chevron" aria-hidden="true">›</span>
+          </summary>
+          <ul class="leg-highlights">
+            <li>Fly back to Lima</li>
+            <li>Stay in Lima until the flight home</li>
+          </ul>
+        </details>
+
+        <details class="leg" data-route="4,5">
+          <summary>
+            <span class="leg-date"><span class="leg-date-num">SEP 9</span><span class="leg-date-dow">Wed</span></span>
+            <span class="leg-city">✈️ Lima → Toronto</span>
+            <span class="leg-chevron" aria-hidden="true">›</span>
+          </summary>
+          <ul class="leg-highlights">
+            <li>Fly home to Toronto</li>
+          </ul>
+        </details>
+
+      </ol>
+    </div>
+  </section>
+
+  <section class="notes">
+    <h2>Good to know</h2>
+    <div class="notes-grid">
+      <div class="note">
+        <h3>Altitude</h3>
+        <p>Cusco sits around 11,000+ ft — the Sep 3–4 stretch is built in to acclimatize before the trek starts.</p>
+      </div>
+      <div class="note">
+        <h3>Inca Trail permits</h3>
+        <p>The classic Inca Trail requires a permit that regularly sells out months ahead — worth double-checking booking status is locked in.</p>
+      </div>
+      <div class="note">
+        <h3>Pack for the trek</h3>
+        <p>Layers for cold nights and warm days, broken-in boots, and a rain layer even in the dry season.</p>
+      </div>
+      <div class="note">
+        <h3>Lima bookend</h3>
+        <p>Sep 7–8 in Lima is unstructured — good window for Miraflores or Barranco, or just resting up before the flight home.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Made for the trip. Details TBD — flight numbers, hotels, and trek operator to be added as we lock them in.</p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="../assets/map.js"></script>
+<script src="../assets/main.js"></script>
+</body>
+</html>

@@ -3,19 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Asia Trip — End of 2026</title>
-<meta name="description" content="Trip hub for the end-of-2026 Asia trip: Japan, Hong Kong, and wherever else gets added.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌏</text></svg>">
+<title>Travel</title>
+<meta name="description" content="Trip itineraries hub — where we're headed, in order.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧳</text></svg>">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
 <header class="hero">
   <div class="hero-inner">
-    <p class="eyebrow">A trip we planned together</p>
-    <h1>Asia Trip<span class="hero-sub">End of 2026</span></h1>
-    <p class="hero-dates">Starting Dec 18 · Chicago and onward</p>
-    <div id="countdown" class="countdown" aria-live="polite"></div>
+    <p class="eyebrow">Trip itineraries</p>
+    <h1>Travel<span class="hero-sub">Where we're headed</span></h1>
   </div>
   <div class="hero-snow" aria-hidden="true"></div>
 </header>
@@ -23,25 +21,41 @@
 <main>
 
   <section class="trips">
-    <h2>Legs of the trip</h2>
+    <div class="trips-head">
+      <h2>Upcoming trips</h2>
+      <p class="trips-hint">Soonest first</p>
+    </div>
     <div class="trip-grid">
 
-      <a class="trip-card" href="trips/tokyo-hokkaido.html">
-        <span class="trip-card-dates">Dec 18 – Dec 23</span>
-        <h3>🗻 Tokyo &amp; Hokkaido</h3>
-        <p>Chicago → Tokyo → Sapporo → Noboribetsu → Hakodate → Tokyo → Hong Kong. Winter city time in Tokyo, onsen and snow up in Hokkaido.</p>
+      <a class="trip-card" href="trips/peru.html">
+        <span class="trip-card-dates"><span class="trip-card-badge is-soon">Soonest</span>Sep 2 – Sep 9, 2026</span>
+        <h3>🦙 Peru</h3>
+        <p>Toronto → Lima → Cusco → 2-day Inca Trail hike → Lima → Toronto.</p>
+        <span class="trip-card-link">View itinerary →</span>
+      </a>
+
+      <a class="trip-card" href="trips/asia/index.html">
+        <span class="trip-card-dates">Dec 18, 2026 – Jan 10, 2027</span>
+        <h3>🌏 Asia Trip</h3>
+        <p>Japan → Hong Kong → South China → Sichuan → Taiwan → home. Three legs, planning in progress.</p>
         <span class="trip-card-link">View itinerary →</span>
       </a>
 
     </div>
   </section>
 
+  <section class="trips trips-past">
+    <div class="trips-head">
+      <h2>Past trips</h2>
+    </div>
+    <p class="trips-empty">TBA — nothing logged here yet.</p>
+  </section>
+
 </main>
 
 <footer>
-  <p>More legs get added here as we plan them. Have a page to add? Drop a new card in <code>index.html</code> and a subpage under <code>/trips</code>.</p>
+  <p>New trip? Add a card here and a hub page under <code>/trips</code>. See <code>README.md</code> for the pattern.</p>
 </footer>
 
-<script src="assets/main.js"></script>
 </body>
 </html>

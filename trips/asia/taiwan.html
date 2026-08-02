@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taiwan &amp; Home — Jan 2027</title>
+<meta name="description" content="Trip plan: Taiwan, then flying home to New York via Tokyo on Jan 10.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🀄</text></svg>">
+<link rel="stylesheet" href="../../assets/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <a class="back-link" href="index.html">← Asia Trip, End of 2026</a>
+    <p class="eyebrow">Leg 3 of 3</p>
+    <h1>Taiwan &amp; Home<span class="hero-sub">Jan 2027</span></h1>
+    <p class="hero-dates">Jan 1 – Jan 10 · Taiwan → Tokyo → New York</p>
+    <div id="countdown" class="countdown" aria-live="polite" data-departure="2027-01-01T00:00:00"></div>
+  </div>
+  <div class="hero-snow" aria-hidden="true"></div>
+</header>
+
+<main>
+
+  <section class="route" aria-label="Route overview">
+    <div class="route-strip">
+      <span class="stop">Taiwan<small>Jan 1 – TBD</small></span>
+      <span class="arrow">✈</span>
+      <span class="stop">HND<small>Tokyo · Jan 10</small></span>
+      <span class="arrow">✈</span>
+      <span class="stop">NYC<small>New York · Jan 10</small></span>
+    </div>
+  </section>
+
+  <section class="itinerary">
+    <h2>Day by day</h2>
+    <p class="trips-hint">Hover or tap a date to see that leg of the route on the map.</p>
+
+    <div class="itinerary-layout">
+
+      <div class="itinerary-map-wrap">
+        <div id="trip-map" class="trip-map" data-stops='[
+          {"label":"Taiwan","lat":25.0330,"lng":121.5654},
+          {"label":"Tokyo (HND)","lat":35.6762,"lng":139.6503},
+          {"label":"New York (JFK)","lat":40.6413,"lng":-73.7781}
+        ]'></div>
+        <p class="trip-map-hint">Click a pin to jump to that day.</p>
+      </div>
+
+      <ol class="legs">
+
+        <details class="leg" data-route="0">
+          <summary>
+            <span class="leg-date"><span class="leg-date-num">JAN 1–TBD</span><span class="leg-date-dow">Fri–?</span></span>
+            <span class="leg-city">🀄 Taiwan</span>
+            <span class="leg-chevron" aria-hidden="true">›</span>
+          </summary>
+          <ul class="leg-highlights">
+            <li>Coming from Chongqing</li>
+            <li>Exact length of stay not locked in yet</li>
+          </ul>
+        </details>
+
+        <details class="leg" data-route="0,1,2">
+          <summary>
+            <span class="leg-date"><span class="leg-date-num">JAN 10</span><span class="leg-date-dow">Sun</span></span>
+            <span class="leg-city">✈️ Taiwan → Tokyo → NYC</span>
+            <span class="leg-chevron" aria-hidden="true">›</span>
+          </summary>
+          <ul class="leg-highlights">
+            <li>Fly Taiwan → Tokyo</li>
+            <li>Connect onward to New York (JFK)</li>
+            <li>Trip wraps up back home</li>
+          </ul>
+        </details>
+
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p class="leg-nav"><a href="hongkong-southchina-sichuan.html">← Back to Leg 2</a></p>
+  <p>Made for the trip. Details TBD — Taiwan cities and the exact return-flight length are still open.</p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="../../assets/map.js"></script>
+<script src="../../assets/main.js"></script>
+</body>
+</html>

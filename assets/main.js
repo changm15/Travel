@@ -1,7 +1,7 @@
 (function () {
-  const departure = new Date("2026-12-18T00:00:00");
   const el = document.getElementById("countdown");
-  if (!el) return;
+  if (!el || !el.dataset.departure) return;
+  const departure = new Date(el.dataset.departure);
 
   function render() {
     const now = new Date();
