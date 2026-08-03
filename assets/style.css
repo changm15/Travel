@@ -221,6 +221,20 @@
   .leg-switcher-item span.leg-switcher-label {
     display: none;
   }
+  .leg-switcher-item {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .leg-switcher-num {
+    width: 20px;
+    height: 20px;
+  }
+  .leg-switcher-num::after {
+    font-size: 0.7rem;
+  }
 }
 
 .site-toast {
