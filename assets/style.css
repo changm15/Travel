@@ -1196,11 +1196,10 @@ body:has(.leg-switcher) .itinerary-map-wrap {
     grid-template-columns: 1fr;
   }
   .itinerary-map-wrap {
-    position: static;
     order: -1;
   }
   .trip-map {
-    height: 300px;
+    height: 260px;
   }
 }
 
