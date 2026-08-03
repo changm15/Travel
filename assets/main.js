@@ -48,6 +48,24 @@
 })();
 
 (function () {
+  const el = document.getElementById("home-base-label");
+  if (!el) return;
+
+  // Add more { start, end, label } ranges here as home base changes.
+  const RANGES = [{ start: "2026-09-01T00:00:00", end: "2026-09-30T23:59:59", label: "Pickering, ON" }];
+  const DEFAULT_LABEL = "New York City";
+
+  function render() {
+    const now = new Date();
+    const match = RANGES.find((r) => now >= new Date(r.start) && now <= new Date(r.end));
+    el.textContent = match ? match.label : DEFAULT_LABEL;
+  }
+
+  render();
+  setInterval(render, 3600000);
+})();
+
+(function () {
   if (!("serviceWorker" in navigator)) return;
 
   const scripts = document.getElementsByTagName("script");

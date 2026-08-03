@@ -29,7 +29,9 @@
   }).addTo(map);
 
   // Each stop's `mode` describes how you get there FROM THE PREVIOUS stop.
-  // flight = solid, ground (train/car/bus) = dashed, hike = dotted.
+  // flight = solid straight line (matches how flight paths are drawn).
+  // ground (train/car/bus) = dashed, traced along real roads via OSRM.
+  // hike = dotted straight line (no free trail-accurate routing available).
   const MODE_DASH = {
     flight: null,
     ground: "10 7",
@@ -40,17 +42,43 @@
     return MODE_DASH[stops[i] && stops[i].mode] !== undefined ? stops[i].mode : "flight";
   }
 
+  // Free, no-API-key road routing (OSRM's public demo server, driving
+  // profile). Best-effort: on any failure we just keep the straight line.
+  const routeCache = new Map();
+
+  function roadRoute(a, b) {
+    const key = `${a[0]},${a[1]}-${b[0]},${b[1]}`;
+    if (routeCache.has(key)) return routeCache.get(key);
+    const promise = fetch(
+      `https://router.project-osrm.org/route/v1/driving/${a[1]},${a[0]};${b[1]},${b[0]}?overview=full&geometries=geojson`
+    )
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        const coords = data && data.routes && data.routes[0] && data.routes[0].geometry.coordinates;
+        return coords && coords.length ? coords.map((c) => [c[1], c[0]]) : null;
+      })
+      .catch(() => null);
+    routeCache.set(key, promise);
+    return promise;
+  }
+
   const baseSegments = [];
   for (let i = 1; i < latlngs.length; i++) {
-    baseSegments.push(
-      L.polyline([latlngs[i - 1], latlngs[i]], {
-        color: isLight ? "#c9beb8" : "#5a4d4a",
-        weight: 3,
-        opacity: 0.9,
-        dashArray: MODE_DASH[modeFor(i)],
-        lineCap: "round",
-      }).addTo(map)
-    );
+    const mode = modeFor(i);
+    const line = L.polyline([latlngs[i - 1], latlngs[i]], {
+      color: isLight ? "#c9beb8" : "#5a4d4a",
+      weight: 3,
+      opacity: 0.9,
+      dashArray: MODE_DASH[mode],
+      lineCap: "round",
+    }).addTo(map);
+    baseSegments.push(line);
+
+    if (mode === "ground") {
+      roadRoute(latlngs[i - 1], latlngs[i]).then((path) => {
+        if (path) line.setLatLngs(path);
+      });
+    }
   }
 
   let activeSegments = [];
@@ -109,15 +137,21 @@
       const j = indices[k - 1];
       if (Math.abs(i - j) !== 1) continue;
       const hi = Math.max(i, j);
-      activeSegments.push(
-        L.polyline([latlngs[j], latlngs[i]], {
-          color: "#d4213f",
-          weight: 4,
-          opacity: 0.95,
-          dashArray: MODE_DASH[modeFor(hi)],
-          lineCap: "round",
-        }).addTo(map)
-      );
+      const mode = modeFor(hi);
+      const seg = L.polyline([latlngs[j], latlngs[i]], {
+        color: "#d4213f",
+        weight: 4,
+        opacity: 0.95,
+        dashArray: MODE_DASH[mode],
+        lineCap: "round",
+      }).addTo(map);
+      activeSegments.push(seg);
+
+      if (mode === "ground") {
+        roadRoute(latlngs[j], latlngs[i]).then((path) => {
+          if (path && activeSegments.includes(seg)) seg.setLatLngs(path);
+        });
+      }
     }
 
     const activeMarkers = new Set(indices.map((i) => markers[i]).filter(Boolean));
