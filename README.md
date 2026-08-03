@@ -1,5 +1,7 @@
 # Michael's Travel Log
 
+> **Archived.** This static site is frozen as a historical mirror. The live site is now a DB-backed Next.js app with an owner login, editor, and live flight tracking — this repo is no longer deployed on push (see `.github/workflows/pages.yml`). Kept here for history.
+
 Hub site for trip itineraries. Static, no build step. Every trip follows the same shape: a top-level hub → a hub page per trip → a page per leg.
 
 - `index.html` — top-level hub. Upcoming trips in a chronological timeline (live days-until countdown per trip, a dashed `.is-home-base` entry for date-ranged home-base overrides), then a Past trips section.

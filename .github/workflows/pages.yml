@@ -1,8 +1,9 @@
 name: Deploy Pages
 
+# Archived: no longer deploys on push. This repo is a frozen historical
+# mirror — the live site moved to a DB-backed Next.js app. Kept as
+# workflow_dispatch only in case the archive ever needs a manual redeploy.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
