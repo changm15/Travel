@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>(function(){try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Milan, Venice, Florence &amp; Rome — Jun/Jul 2026 · Michael's Travel Log</title>
+<meta name="description" content="Trip log: Milan, Venice, Florence, and Rome, connected by train, flights via Frankfurt on Condor.">
+<link rel="icon" href="../../icons/icon-32.png" type="image/png">
+<link rel="stylesheet" href="../../assets/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="manifest" href="../../manifest.webmanifest">
+<link rel="apple-touch-icon" href="../../icons/icon-180.png">
+<meta name="theme-color" content="#0a0a0c">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Travel Log">
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12L22 4L14 22L11 14L2 12Z"/></symbol>
+  <symbol id="icon-train" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="13" rx="4"/><path d="M5 11H19"/><circle cx="8.5" cy="19" r="1.3"/><circle cx="15.5" cy="19" r="1.3"/><path d="M8 16L6 20M16 16L18 20"/></symbol>
+  <symbol id="icon-mountain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19L9 7L14 15L17 10L21 19H3Z"/></symbol>
+  <symbol id="icon-snowflake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2V22M4.5 6.5L19.5 17.5M19.5 6.5L4.5 17.5"/></symbol>
+  <symbol id="icon-onsen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18C4 18 4 15 7 15C10 15 10 18 13 18C16 18 16 15 19 15"/><path d="M8 11C8 11 6 9 8 6M12 11C12 11 10 9 12 5M16 11C16 11 14 9 16 6"/></symbol>
+  <symbol id="icon-city" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="4" height="10"/><rect x="9.5" y="5" width="4" height="15"/><rect x="16" y="13" width="4" height="7"/></symbol>
+  <symbol id="icon-panda" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="13" r="7"/><circle cx="6.3" cy="6.8" r="2.2"/><circle cx="17.7" cy="6.8" r="2.2"/><circle cx="9" cy="13" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="13" r="1.1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="icon-bed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19V6M3 13H21V19M3 13V10.5C3 9.1 4.1 8 5.5 8H12C13.4 8 14.5 9.1 14.5 10.5V13M21 13V16"/><circle cx="7.3" cy="10.4" r="1"/></symbol>
+  <symbol id="icon-dining" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3V9M9 3V9M6 9C6 9 6 13 7.5 13V21M9 3V9C9 9 9 13 7.5 13"/><path d="M17 3C17 3 14 5 14 9C14 11 15.5 12 17 12V21"/></symbol>
+  <symbol id="icon-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 2C12 2 6 8 6 13C6 17 9 20 12 20C15 20 18 17 18 13C18 9 15 8 15 8C15 8 16 11 14 12C14 12 15 6 12 2Z"/></symbol>
+  <symbol id="icon-pagoda" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L16 7H8L12 2Z"/><path d="M5 12H19L16 7H8L5 12Z"/><rect x="9" y="12" width="6" height="8"/><path d="M6 20H18"/></symbol>
+  <symbol id="icon-boot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V13C5 13 5 10 8 10C9 10 9 8 9 8H12V13L18 15C19.5 15.5 20 16.5 20 17.5V21H5Z"/><path d="M5 18H20"/></symbol>
+  <symbol id="icon-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 11C5 15 8 17 12 17C16 17 19 15 19 11"/><path d="M12 17V22M8 22H16"/></symbol>
+  <symbol id="icon-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20V13M4 20H20"/></symbol>
+  <symbol id="icon-podium" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V9L12 6L18 9V21"/><path d="M9 21V14H15V21"/><path d="M4 21H20"/></symbol>
+  <symbol id="icon-llama" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21V15C9 15 6 14 6 10C6 7 8 5 8 3C8 3 10 4 10 6L11 8H13C13 8 14 5 16 5C16 5 15 7 15 9C15 11 17 12 17 15V21"/><path d="M9 21H11M15 21H17"/></symbol>
+  <symbol id="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11L12 4L20 11V20H14V14H10V20H4V11Z"/></symbol>
+  <symbol id="icon-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12H21M12 3C14.5 5.7 15.8 8.7 15.8 12C15.8 15.3 14.5 18.3 12 21C9.5 18.3 8.2 15.3 8.2 12C8.2 8.7 9.5 5.7 12 3Z"/></symbol>
+  <symbol id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1V4M12 20V23M23 12H20M4 12H1M19.07 4.93L16.95 7.05M7.05 16.95L4.93 19.07M19.07 19.07L16.95 16.95M7.05 7.05L4.93 4.93"/></symbol>
+  <symbol id="icon-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5C8 3.9 8.9 3 10 3H14C15.1 3 16 3.9 16 5V7"/><path d="M3 12H21"/></symbol>
+  <symbol id="icon-blossom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><circle cx="12" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/></symbol>
+  <symbol id="icon-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8H7L9 5H15L17 8H20C21.1 8 22 8.9 22 10V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V10C2 8.9 2.9 8 4 8Z"/><circle cx="12" cy="14" r="3.5"/></symbol>
+</svg>
+
+<nav class="site-nav">
+  <a href="index.html" class="site-nav-back">← Italy</a>
+  <div class="site-actions">
+  <a href="../../index.html" class="site-action-btn" aria-label="Home">
+    <svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg>
+  </a>
+  <button type="button" class="site-action-btn" id="theme-toggle" aria-label="Toggle dark/light mode">
+    <svg id="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg id="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
+  <button type="button" class="site-action-btn" id="share-btn" aria-label="Share this page">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+  </button>
+</div>
+</nav>
+<div class="site-toast" id="site-toast"></div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Leg 1 of 1</p>
+    <h1>Milan, Venice, Florence &amp; Rome<span class="hero-sub">June / July 2026</span></h1>
+    <p class="hero-dates">Jun 27 – Jul 5 · JFK → Milan → Venice → Florence → Rome → JFK</p>
+  </div>
+  <div class="hero-snow" aria-hidden="true"></div>
+</header>
+
+<main>
+
+  <section class="itinerary">
+    <h2>Day by day</h2>
+    <p class="trips-hint">Hover or tap a date to see that leg of the route on the map.</p>
+
+    <div class="itinerary-layout">
+
+      <div class="itinerary-map-wrap">
+        <div id="trip-map" class="trip-map" data-stops='[
+          {"label":"New York (JFK)","lat":40.6413,"lng":-73.7781},
+          {"label":"Milan (MXP)","lat":45.4642,"lng":9.1900,"mode":"flight"},
+          {"label":"Venice","lat":45.4408,"lng":12.3155,"mode":"ground"},
+          {"label":"Florence","lat":43.7696,"lng":11.2558,"mode":"ground"},
+          {"label":"Rome","lat":41.9028,"lng":12.4964,"mode":"ground"},
+          {"label":"New York (JFK)","lat":40.6413,"lng":-73.7781,"mode":"flight"}
+        ]'></div>
+        <p class="trip-map-hint">Click a pin to jump to that day.</p>
+        <div class="trip-map-legend">
+          <span class="legend-item"><span class="legend-line is-flight"></span>Flight</span>
+          <span class="legend-item"><span class="legend-line is-ground"></span>Train/car</span>
+          <span class="legend-item"><span class="legend-line is-hike"></span>Bus/hike</span>
+        </div>
+      </div>
+
+      <ol class="legs trip-timeline is-compact is-past">
+
+        <li class="trip-stop">
+          <div class="trip-stop-marker">
+            <span class="trip-stop-date-num">27</span>
+            <span class="trip-stop-date-mon">JUN</span>
+          </div>
+          <details class="leg" name="legs" data-route="0,1">
+            <summary>
+              <span class="leg-info">
+                <span class="leg-date-range">Jun 27–28 · Sat–Sun</span>
+                <span class="leg-city"><svg class="icon" aria-hidden="true"><use href="#icon-plane"/></svg>Fly to Milan</span>
+              </span>
+              <span class="leg-flight"><svg class="icon" aria-hidden="true"><use href="#icon-plane"/></svg><strong>DE2017</strong> / <strong>DE4355</strong></span>
+              <span class="leg-lodging"><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg><strong>Milan</strong></span>
+              <span class="leg-chevron" aria-hidden="true">›</span>
+            </summary>
+            <ul class="leg-highlights">
+              <li>Depart JFK, 4:05 PM — DE2017 (Condor)</li>
+              <li>Connect via Frankfurt, 2h45m layover</li>
+              <li>Arrive Milan (MXP), 9:40 AM — DE4355 (Condor)</li>
+              <li>Check into Palazzo Loreto Hotel Milano, 2:00 PM</li>
+            </ul>
+          </details>
+        </li>
+
+        <li class="trip-stop">
+          <div class="trip-stop-marker">
+            <span class="trip-stop-date-num">29</span>
+            <span class="trip-stop-date-mon">JUN</span>
+          </div>
+          <details class="leg" name="legs" data-route="1,2">
+            <summary>
+              <span class="leg-info">
+                <span class="leg-date-range">Jun 29 · Mon</span>
+                <span class="leg-city"><svg class="icon" aria-hidden="true"><use href="#icon-train"/></svg>Milan → Venice</span>
+              </span>
+              <span class="leg-lodging"><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg><strong>Venice</strong></span>
+              <span class="leg-chevron" aria-hidden="true">›</span>
+            </summary>
+            <ul class="leg-highlights">
+              <li>1 night in Milan</li>
+              <li>Train 8977, Milano Centrale → Venezia S.L., 9:35–12:03</li>
+              <li>Check into B&amp;B Hotel Venezia Laguna, 3:00 PM</li>
+            </ul>
+          </details>
+        </li>
+
+        <li class="trip-stop">
+          <div class="trip-stop-marker">
+            <span class="trip-stop-date-num">1</span>
+            <span class="trip-stop-date-mon">JUL</span>
+          </div>
+          <details class="leg" name="legs" data-route="2,3">
+            <summary>
+              <span class="leg-info">
+                <span class="leg-date-range">Jul 1 · Wed</span>
+                <span class="leg-city"><svg class="icon" aria-hidden="true"><use href="#icon-train"/></svg>Venice → Florence</span>
+              </span>
+              <span class="leg-lodging"><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg><strong>Florence</strong></span>
+              <span class="leg-chevron" aria-hidden="true">›</span>
+            </summary>
+            <ul class="leg-highlights">
+              <li>2 nights in Venice</li>
+              <li>Train 8905, Venezia S.L. → Firenze S.M., 8:05–10:20 AM</li>
+              <li>Check into Residenza Conte di Cavour &amp; Rooftop, 3:00 PM</li>
+            </ul>
+          </details>
+        </li>
+
+        <li class="trip-stop">
+          <div class="trip-stop-marker">
+            <span class="trip-stop-date-num">3</span>
+            <span class="trip-stop-date-mon">JUL</span>
+          </div>
+          <details class="leg" name="legs" data-route="3,4">
+            <summary>
+              <span class="leg-info">
+                <span class="leg-date-range">Jul 3 · Fri</span>
+                <span class="leg-city"><svg class="icon" aria-hidden="true"><use href="#icon-train"/></svg>Florence → Rome</span>
+              </span>
+              <span class="leg-lodging"><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg><strong>Rome</strong></span>
+              <span class="leg-chevron" aria-hidden="true">›</span>
+            </summary>
+            <ul class="leg-highlights">
+              <li>2 nights in Florence</li>
+              <li>Train 9907, Firenze S.M. → Roma Termini, 7:43–9:19 AM</li>
+              <li>Check into Sina Bernini Bristol, Autograph Collection, 3:00 PM</li>
+            </ul>
+          </details>
+        </li>
+
+        <li class="trip-stop">
+          <div class="trip-stop-marker">
+            <span class="trip-stop-date-num">5</span>
+            <span class="trip-stop-date-mon">JUL</span>
+          </div>
+          <details class="leg" name="legs" data-route="4,5">
+            <summary>
+              <span class="leg-info">
+                <span class="leg-date-range">Jul 5 · Sun</span>
+                <span class="leg-city"><svg class="icon" aria-hidden="true"><use href="#icon-plane"/></svg>Fly home via Frankfurt</span>
+              </span>
+              <span class="leg-flight"><svg class="icon" aria-hidden="true"><use href="#icon-plane"/></svg><strong>DE4418</strong> / <strong>DE2016</strong></span>
+              <span class="leg-lodging"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg><strong>Home</strong></span>
+              <span class="leg-chevron" aria-hidden="true">›</span>
+            </summary>
+            <ul class="leg-highlights">
+              <li>1 night in Rome, checked out Jul 4</li>
+              <li>Depart FCO, 8:10 AM — DE4418 (Condor)</li>
+              <li>Connect via Frankfurt, 1h25m layover</li>
+              <li>Arrive JFK, 2:10 PM EDT — DE2016 (Condor)</li>
+            </ul>
+          </details>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
+  <section class="notes">
+    <h2>Good to know</h2>
+    <div class="notes-grid">
+      <div class="note">
+        <h3>Frankfurt connections</h3>
+        <p>Both the outbound and return routed through Frankfurt on Condor — a comfortable 2h45m layover heading out, a tighter 1h25m coming home.</p>
+      </div>
+      <div class="note">
+        <h3>High-speed rail</h3>
+        <p>Milan → Venice → Florence → Rome connected entirely by train — no additional flights needed once in Italy.</p>
+      </div>
+      <div class="note">
+        <h3>Four cities in nine days</h3>
+        <p>1 night in Milan, 2 in Venice, 2 in Florence, 2 in Rome — a fast-moving loop down the country.</p>
+      </div>
+      <div class="note">
+        <h3>Where we stayed</h3>
+        <p>Palazzo Loreto Hotel Milano · B&amp;B Hotel Venezia Laguna · Residenza Conte di Cavour &amp; Rooftop (Florence) · Sina Bernini Bristol, Autograph Collection (Rome).</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Logged after the fact from TripIt.</p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="../../assets/map.js"></script>
+<script src="../../assets/main.js"></script>
+<script src="../../assets/theme.js"></script>
+</body>
+</html>
