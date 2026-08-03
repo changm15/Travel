@@ -587,6 +587,22 @@ main {
   color: var(--accent) !important;
 }
 
+.leaflet-control-zoom {
+  border: 1px solid rgba(var(--line-rgb), 0.15) !important;
+  box-shadow: none !important;
+}
+
+.leaflet-control-zoom a {
+  background: var(--navy-800) !important;
+  color: var(--ice-50) !important;
+  border-color: rgba(var(--line-rgb), 0.12) !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: var(--navy-700) !important;
+  color: var(--accent) !important;
+}
+
 .legs {
   list-style: none;
   margin: 0;
