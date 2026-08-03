@@ -1,7 +1,7 @@
 {
   "name": "Michael's Travel Log",
   "short_name": "Travel Log",
-  "description": "Trip itineraries — where we're headed, in order.",
+  "description": "Michael's trip itineraries — where to find him, in order.",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",
