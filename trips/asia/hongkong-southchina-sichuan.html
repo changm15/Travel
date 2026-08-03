@@ -47,12 +47,17 @@
       <div class="itinerary-map-wrap">
         <div id="trip-map" class="trip-map" data-stops='[
           {"label":"Hong Kong","lat":22.3193,"lng":114.1694},
-          {"label":"Shenzhen","lat":22.5431,"lng":114.0579},
-          {"label":"Guangzhou","lat":23.1291,"lng":113.2644},
-          {"label":"Chengdu","lat":30.5728,"lng":104.0668},
-          {"label":"Chongqing","lat":29.5630,"lng":106.5516}
+          {"label":"Shenzhen","lat":22.5431,"lng":114.0579,"mode":"ground"},
+          {"label":"Guangzhou","lat":23.1291,"lng":113.2644,"mode":"ground"},
+          {"label":"Chengdu","lat":30.5728,"lng":104.0668,"mode":"flight"},
+          {"label":"Chongqing","lat":29.5630,"lng":106.5516,"mode":"ground"}
         ]'></div>
         <p class="trip-map-hint">Click a pin to jump to that day.</p>
+        <div class="trip-map-legend">
+          <span class="legend-item"><span class="legend-line is-flight"></span>Flight</span>
+          <span class="legend-item"><span class="legend-line is-ground"></span>Train/car</span>
+          <span class="legend-item"><span class="legend-line is-hike"></span>Bus/hike</span>
+        </div>
       </div>
 
       <ol class="legs trip-timeline is-compact">

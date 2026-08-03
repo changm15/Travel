@@ -507,6 +507,38 @@ main {
   opacity: 0.7;
 }
 
+.trip-map-legend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  margin: 0.5rem 0 0;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--ice-300);
+}
+
+.trip-map-legend .legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.trip-map-legend .legend-line {
+  display: inline-block;
+  width: 22px;
+  height: 0;
+  border-top: 2px solid var(--ice-300);
+}
+
+.trip-map-legend .legend-line.is-ground {
+  border-top-style: dashed;
+}
+
+.trip-map-legend .legend-line.is-hike {
+  border-top-style: dotted;
+}
+
 .trip-map-marker span {
   display: flex;
   align-items: center;

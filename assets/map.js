@@ -25,11 +25,32 @@
     maxZoom: 19,
   }).addTo(map);
 
-  let activePath = null;
-  if (latlngs.length > 1) {
-    L.polyline(latlngs, { color: isLight ? "#c9beb8" : "#5a4d4a", weight: 3, opacity: 0.9 }).addTo(map);
-    activePath = L.polyline([], { color: "#d4213f", weight: 4, opacity: 0.95 }).addTo(map);
+  // Each stop's `mode` describes how you get there FROM THE PREVIOUS stop.
+  // flight = solid, ground (train/car/bus) = dashed, hike = dotted.
+  const MODE_DASH = {
+    flight: null,
+    ground: "10 7",
+    hike: "1 8",
+  };
+
+  function modeFor(i) {
+    return MODE_DASH[stops[i] && stops[i].mode] !== undefined ? stops[i].mode : "flight";
   }
+
+  const baseSegments = [];
+  for (let i = 1; i < latlngs.length; i++) {
+    baseSegments.push(
+      L.polyline([latlngs[i - 1], latlngs[i]], {
+        color: isLight ? "#c9beb8" : "#5a4d4a",
+        weight: 3,
+        opacity: 0.9,
+        dashArray: MODE_DASH[modeFor(i)],
+        lineCap: "round",
+      }).addTo(map)
+    );
+  }
+
+  let activeSegments = [];
 
   const groups = new Map();
   stops.forEach((s, i) => {
@@ -69,7 +90,8 @@
   }
 
   function clearHighlight() {
-    if (activePath) activePath.setLatLngs([]);
+    activeSegments.forEach((s) => map.removeLayer(s));
+    activeSegments = [];
     uniqueMarkers.forEach((m) => {
       if (!m.getElement()) return;
       m.getElement().classList.remove("is-active", "is-dimmed");
@@ -78,8 +100,22 @@
 
   function highlight(indices) {
     clearHighlight();
-    const path = indices.map((i) => latlngs[i]).filter(Boolean);
-    if (activePath && path.length > 1) activePath.setLatLngs(path);
+
+    for (let k = 1; k < indices.length; k++) {
+      const i = indices[k];
+      const j = indices[k - 1];
+      if (Math.abs(i - j) !== 1) continue;
+      const hi = Math.max(i, j);
+      activeSegments.push(
+        L.polyline([latlngs[j], latlngs[i]], {
+          color: "#d4213f",
+          weight: 4,
+          opacity: 0.95,
+          dashArray: MODE_DASH[modeFor(hi)],
+          lineCap: "round",
+        }).addTo(map)
+      );
+    }
 
     const activeMarkers = new Set(indices.map((i) => markers[i]).filter(Boolean));
     if (!activeMarkers.size) return;

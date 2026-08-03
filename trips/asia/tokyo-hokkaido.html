@@ -51,14 +51,19 @@
       <div class="itinerary-map-wrap">
         <div id="trip-map" class="trip-map" data-stops='[
           {"label":"Chicago (ORD)","lat":41.8781,"lng":-87.6298},
-          {"label":"Tokyo (HND)","lat":35.6762,"lng":139.6503},
-          {"label":"Sapporo (CTS)","lat":43.0618,"lng":141.3545},
-          {"label":"Noboribetsu","lat":42.4145,"lng":141.1728},
-          {"label":"Hakodate","lat":41.7687,"lng":140.7291},
-          {"label":"Tokyo (HND)","lat":35.6762,"lng":139.6503},
-          {"label":"Hong Kong (HKG)","lat":22.3193,"lng":114.1694}
+          {"label":"Tokyo (HND)","lat":35.6762,"lng":139.6503,"mode":"flight"},
+          {"label":"Sapporo (CTS)","lat":43.0618,"lng":141.3545,"mode":"flight"},
+          {"label":"Noboribetsu","lat":42.4145,"lng":141.1728,"mode":"ground"},
+          {"label":"Hakodate","lat":41.7687,"lng":140.7291,"mode":"ground"},
+          {"label":"Tokyo (HND)","lat":35.6762,"lng":139.6503,"mode":"flight"},
+          {"label":"Hong Kong (HKG)","lat":22.3193,"lng":114.1694,"mode":"flight"}
         ]'></div>
         <p class="trip-map-hint">Click a pin to jump to that day.</p>
+        <div class="trip-map-legend">
+          <span class="legend-item"><span class="legend-line is-flight"></span>Flight</span>
+          <span class="legend-item"><span class="legend-line is-ground"></span>Train/car</span>
+          <span class="legend-item"><span class="legend-line is-hike"></span>Bus/hike</span>
+        </div>
       </div>
 
       <ol class="legs trip-timeline is-compact">

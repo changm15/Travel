@@ -49,13 +49,18 @@
       <div class="itinerary-map-wrap">
         <div id="trip-map" class="trip-map" data-stops='[
           {"label":"Toronto (YYZ)","lat":43.6777,"lng":-79.6248},
-          {"label":"Lima (LIM)","lat":-12.0219,"lng":-77.1143},
-          {"label":"Cusco (CUZ)","lat":-13.5319,"lng":-71.9675},
-          {"label":"Inca Trail","lat":-13.1631,"lng":-72.5450},
-          {"label":"Lima (LIM)","lat":-12.0219,"lng":-77.1143},
-          {"label":"Toronto (YYZ)","lat":43.6777,"lng":-79.6248}
+          {"label":"Lima (LIM)","lat":-12.0219,"lng":-77.1143,"mode":"flight"},
+          {"label":"Cusco (CUZ)","lat":-13.5319,"lng":-71.9675,"mode":"flight"},
+          {"label":"Inca Trail","lat":-13.1631,"lng":-72.5450,"mode":"hike"},
+          {"label":"Lima (LIM)","lat":-12.0219,"lng":-77.1143,"mode":"flight"},
+          {"label":"Toronto (YYZ)","lat":43.6777,"lng":-79.6248,"mode":"flight"}
         ]'></div>
         <p class="trip-map-hint">Click a pin to jump to that day.</p>
+        <div class="trip-map-legend">
+          <span class="legend-item"><span class="legend-line is-flight"></span>Flight</span>
+          <span class="legend-item"><span class="legend-line is-ground"></span>Train/car</span>
+          <span class="legend-item"><span class="legend-line is-hike"></span>Bus/hike</span>
+        </div>
       </div>
 
       <ol class="legs trip-timeline is-compact">
