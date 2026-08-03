@@ -25,23 +25,47 @@
       <h2>Upcoming trips</h2>
       <p class="trips-hint">Soonest first</p>
     </div>
-    <div class="trip-grid">
 
-      <a class="trip-card" href="trips/peru.html">
-        <span class="trip-card-dates"><span class="trip-card-badge is-soon">Soonest</span>Sep 2 – Sep 9, 2026</span>
-        <h3>🦙 Peru</h3>
-        <p>Toronto → Lima → Cusco → 2-day Inca Trail hike → Lima → Toronto.</p>
-        <span class="trip-card-link">View itinerary →</span>
-      </a>
+    <ol class="trip-timeline">
 
-      <a class="trip-card" href="trips/asia/index.html">
-        <span class="trip-card-dates">Dec 18, 2026 – Jan 10, 2027</span>
-        <h3>🌏 Asia Trip</h3>
-        <p>Japan → Hong Kong → South China → Sichuan → Taiwan → home. Three legs, planning in progress.</p>
-        <span class="trip-card-link">View itinerary →</span>
-      </a>
+      <li class="trip-stop">
+        <div class="trip-stop-marker">
+          <span class="trip-stop-days-num" data-departure="2026-09-02T00:00:00">–</span>
+          <span class="trip-stop-days-label">days</span>
+        </div>
+        <a class="trip-card" href="trips/peru.html">
+          <span class="trip-card-dates">
+            <span class="trip-card-badge is-soon">Soonest</span>
+            Sep 2 – Sep 9, 2026
+          </span>
+          <h3>🦙 Peru</h3>
+          <ul class="leg-highlights">
+            <li>Cusco acclimatization</li>
+            <li>2-day Inca Trail hike</li>
+            <li>Lima bookends</li>
+          </ul>
+          <span class="trip-card-link">View itinerary →</span>
+        </a>
+      </li>
 
-    </div>
+      <li class="trip-stop">
+        <div class="trip-stop-marker">
+          <span class="trip-stop-days-num" data-departure="2026-12-18T00:00:00">–</span>
+          <span class="trip-stop-days-label">days</span>
+        </div>
+        <a class="trip-card" href="trips/asia/index.html">
+          <span class="trip-card-dates">Dec 18, 2026 – Jan 10, 2027</span>
+          <h3>🌏 Asia Trip</h3>
+          <ul class="leg-highlights">
+            <li>Japan — Tokyo &amp; Hokkaido</li>
+            <li>Hong Kong &amp; South China</li>
+            <li>Taiwan → home</li>
+          </ul>
+          <span class="trip-card-link">View itinerary →</span>
+        </a>
+      </li>
+
+    </ol>
   </section>
 
   <section class="trips trips-past">
@@ -57,5 +81,6 @@
   <p>New trip? Add a card here and a hub page under <code>/trips</code>. See <code>README.md</code> for the pattern.</p>
 </footer>
 
+<script src="assets/main.js"></script>
 </body>
 </html>

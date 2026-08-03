@@ -20,3 +20,29 @@
   render();
   setInterval(render, 60000);
 })();
+
+(function () {
+  const nodes = document.querySelectorAll(".trip-stop-days-num[data-departure]");
+  if (!nodes.length) return;
+
+  function render() {
+    const now = new Date();
+    nodes.forEach((el) => {
+      const departure = new Date(el.dataset.departure);
+      const diff = departure - now;
+      const days = Math.ceil(diff / 86400000);
+      const label = el.nextElementSibling;
+
+      if (days <= 0) {
+        el.textContent = "✈️";
+        if (label) label.textContent = "underway";
+      } else {
+        el.textContent = String(days);
+        if (label) label.textContent = days === 1 ? "day" : "days";
+      }
+    });
+  }
+
+  render();
+  setInterval(render, 60000);
+})();

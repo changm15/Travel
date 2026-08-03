@@ -209,6 +209,96 @@ main {
   gap: 1.25rem;
 }
 
+/* ---------- Home page trip timeline ---------- */
+
+.trip-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.trip-timeline::before {
+  content: "";
+  position: absolute;
+  left: 34px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), rgba(127,212,255,0.08));
+}
+
+.trip-stop {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.trip-stop-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--navy-800);
+  border: 2px solid var(--accent);
+  z-index: 1;
+}
+
+.trip-stop:first-child .trip-stop-marker {
+  background: var(--accent);
+}
+
+.trip-stop-days-num {
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--accent);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.trip-stop-days-label {
+  font-family: var(--sans);
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ice-300);
+  margin-top: 0.1rem;
+}
+
+.trip-stop:first-child .trip-stop-days-num,
+.trip-stop:first-child .trip-stop-days-label {
+  color: var(--navy-950);
+}
+
+.trip-card .leg-highlights {
+  padding: 0;
+  margin: 0.15rem 0 0;
+}
+
+@media (max-width: 560px) {
+  .trip-stop {
+    grid-template-columns: 52px 1fr;
+    gap: 0.85rem;
+  }
+  .trip-timeline::before {
+    left: 25px;
+  }
+  .trip-stop-marker {
+    width: 52px;
+    height: 52px;
+  }
+  .trip-stop-days-num {
+    font-size: 1rem;
+  }
+}
+
 .trip-card {
   display: flex;
   flex-direction: column;
