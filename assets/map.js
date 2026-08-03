@@ -10,6 +10,19 @@
   }
   if (!stops.length) return;
 
+  // Let the user collapse the map to just read the day-by-day list,
+  // especially handy on mobile where the map eats a lot of vertical space.
+  const mapWrap = el.closest(".itinerary-map-wrap");
+  let toggleBtn = null;
+  if (mapWrap) {
+    toggleBtn = document.createElement("button");
+    toggleBtn.type = "button";
+    toggleBtn.className = "map-toggle-btn";
+    toggleBtn.textContent = "Hide map";
+    toggleBtn.setAttribute("aria-label", "Hide map");
+    mapWrap.insertBefore(toggleBtn, el);
+  }
+
   const latlngs = stops.map((s) => [s.lat, s.lng]);
   // Any element with data-route participates in hover/focus highlighting
   // (day cards AND the route-strip pills). Only <details class="leg"> is a
@@ -18,6 +31,17 @@
   const legDetails = interactive.filter((n) => n.tagName === "DETAILS");
 
   const map = L.map(el, { scrollWheelZoom: false });
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      const hidden = mapWrap.classList.toggle("is-hidden");
+      toggleBtn.textContent = hidden ? "Show map" : "Hide map";
+      toggleBtn.setAttribute("aria-label", hidden ? "Show map" : "Hide map");
+      if (!hidden) {
+        setTimeout(() => map.invalidateSize(), 50);
+      }
+    });
+  }
 
   const forcedTheme = document.documentElement.getAttribute("data-theme");
   const isLight =
