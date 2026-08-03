@@ -729,6 +729,11 @@ main {
   color: var(--accent-warm);
 }
 
+.trip-card-badge.is-client {
+  background: rgba(var(--line-rgb), 0.1);
+  color: var(--ice-300);
+}
+
 .trip-card h3 {
   font-size: 1.2rem;
 }
@@ -819,6 +824,33 @@ main {
   margin: 0;
   color: var(--ice-300);
   font-size: 0.88rem;
+}
+
+/* ---------- Past trips (logged history — muted timeline, no live countdown) ---------- */
+
+.trip-timeline.is-past::before {
+  background: linear-gradient(180deg, rgba(var(--line-rgb), 0.28), rgba(var(--line-rgb), 0.06));
+}
+
+.trip-timeline.is-past .trip-stop-marker {
+  border-color: rgba(var(--line-rgb), 0.28);
+}
+
+.trip-timeline.is-past .trip-stop:first-child .trip-stop-marker {
+  background: var(--navy-800);
+}
+
+.trip-timeline.is-past .trip-stop-date-num {
+  color: var(--ice-300);
+}
+
+.trip-timeline.is-past .trip-stop:first-child .trip-stop-date-num,
+.trip-timeline.is-past .trip-stop:first-child .trip-stop-date-mon {
+  color: var(--ice-300);
+}
+
+.trip-timeline.is-past .trip-card-dates {
+  color: var(--ice-300);
 }
 
 /* ---------- Home-base marker in the upcoming-trips timeline ---------- */
