@@ -482,6 +482,42 @@ main {
   margin: 0;
 }
 
+/* ---------- Trip photos (iCloud Shared Album link-out) ---------- */
+/* .trip-photos is the base look, meant for an <a> once a real iCloud link
+   exists. .trip-photos.is-placeholder is the quiet "nothing to click yet"
+   state — dashed border, muted text, no href — used on a <p> until a real
+   Shared Album URL is dropped in. See README.md "Page patterns" for the
+   swap-in markup. */
+
+.trip-photos {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 1.75rem;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--ice-100);
+  text-decoration: none;
+}
+
+.trip-photos:hover {
+  color: var(--accent);
+}
+
+.trip-photos.is-placeholder {
+  color: var(--ice-300);
+  opacity: 0.75;
+  font-style: italic;
+  padding: 0.55rem 0.85rem;
+  border: 1px dashed rgba(var(--line-rgb), 0.2);
+  border-radius: var(--radius);
+}
+
+.trip-photos .icon {
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
 .trip-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -731,6 +767,58 @@ main {
   border-radius: var(--radius);
   text-align: center;
   opacity: 0.75;
+}
+
+/* ---------- Potential trips (loose ideas — no hub/leg pages, not clickable) ---------- */
+
+.potential-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.potential-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px dashed rgba(var(--line-rgb), 0.2);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.75rem;
+  opacity: 0.82;
+}
+
+.potential-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  border: 1px dashed rgba(var(--line-rgb), 0.25);
+  color: var(--ice-300);
+}
+
+.potential-card h3 {
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.potential-card h3 .icon {
+  color: var(--ice-300);
+}
+
+.potential-card p {
+  margin: 0;
+  color: var(--ice-300);
+  font-size: 0.88rem;
 }
 
 /* ---------- Home-base marker in the upcoming-trips timeline ---------- */
