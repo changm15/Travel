@@ -81,7 +81,7 @@
 .site-nav {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -160,8 +160,8 @@
 
 .leg-switcher {
   position: sticky;
-  top: 53px;
-  z-index: 49;
+  top: 64px;
+  z-index: 999;
   display: flex;
   justify-content: center;
   gap: 0.4rem;
@@ -675,10 +675,14 @@ main {
 }
 
 .trip-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--sans);
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  padding: 0.15rem 0.5rem;
+  padding: 0.15rem 0.55rem;
   border-radius: 999px;
   background: rgba(var(--accent-rgb), 0.14);
   color: var(--accent);
@@ -783,8 +787,13 @@ main {
 
 .itinerary-map-wrap {
   position: sticky;
-  top: 1.5rem;
+  top: 78px;
   order: 2;
+  z-index: 10;
+}
+
+body:has(.leg-switcher) .itinerary-map-wrap {
+  top: 126px;
 }
 
 .trip-map {
