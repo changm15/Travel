@@ -229,7 +229,7 @@ main {
   font-family: var(--sans);
   color: var(--ice-300);
   font-size: 0.95rem;
-  margin: -1rem 0 1.75rem;
+  margin: 0.85rem 0 1.75rem;
   max-width: 640px;
 }
 
