@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <script>(function(){try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hong Kong &amp; South China — Dec 2026 · Michael's Travel Log</title>
-<meta name="description" content="Trip plan: Hong Kong, Shenzhen, maybe Guangzhou, then Chengdu and Chongqing.">
+<title>Hong Kong, South China & Sichuan — Dec 2026 · Michael's Travel Log</title>
+<meta name="description" content="Trip plan: Hong Kong, Shenzhen, maybe Guangzhou, then Chengdu and Chongqing in Sichuan.">
 <link rel="icon" href="../../icons/icon-32.png" type="image/png">
 <link rel="stylesheet" href="../../assets/style.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
@@ -37,9 +37,15 @@
   <symbol id="icon-llama" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21V15C9 15 6 14 6 10C6 7 8 5 8 3C8 3 10 4 10 6L11 8H13C13 8 14 5 16 5C16 5 15 7 15 9C15 11 17 12 17 15V21"/><path d="M9 21H11M15 21H17"/></symbol>
   <symbol id="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11L12 4L20 11V20H14V14H10V20H4V11Z"/></symbol>
   <symbol id="icon-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12H21M12 3C14.5 5.7 15.8 8.7 15.8 12C15.8 15.3 14.5 18.3 12 21C9.5 18.3 8.2 15.3 8.2 12C8.2 8.7 9.5 5.7 12 3Z"/></symbol>
+  <symbol id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1V4M12 20V23M23 12H20M4 12H1M19.07 4.93L16.95 7.05M7.05 16.95L4.93 19.07M19.07 19.07L16.95 16.95M7.05 7.05L4.93 4.93"/></symbol>
+  <symbol id="icon-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5C8 3.9 8.9 3 10 3H14C15.1 3 16 3.9 16 5V7"/><path d="M3 12H21"/></symbol>
+  <symbol id="icon-blossom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><circle cx="12" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/></symbol>
+  <symbol id="icon-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8H7L9 5H15L17 8H20C21.1 8 22 8.9 22 10V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V10C2 8.9 2.9 8 4 8Z"/><circle cx="12" cy="14" r="3.5"/></symbol>
 </svg>
 
-<div class="site-actions">
+<nav class="site-nav">
+  <a href="index.html" class="site-nav-back">← Asia Trip, End of 2026</a>
+  <div class="site-actions">
   <a href="../../index.html" class="site-action-btn" aria-label="Home">
     <svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg>
   </a>
@@ -51,13 +57,18 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
   </button>
 </div>
+</nav>
+<div class="leg-switcher">
+  <a href="tokyo-hokkaido.html" class="leg-switcher-item"><span class="leg-switcher-num" data-num="1"></span><span class="leg-switcher-label">Japan</span></a>
+  <a href="hongkong-southchina-sichuan.html" class="leg-switcher-item is-current"><span class="leg-switcher-num" data-num="2"></span><span class="leg-switcher-label">HK & Sichuan</span></a>
+  <a href="taiwan.html" class="leg-switcher-item"><span class="leg-switcher-num" data-num="3"></span><span class="leg-switcher-label">Taiwan</span></a>
+</div>
 <div class="site-toast" id="site-toast"></div>
 
 <header class="hero">
   <div class="hero-inner">
-    <a class="back-link" href="index.html">← Asia Trip, End of 2026</a>
     <p class="eyebrow">Leg 2 of 3</p>
-    <h1>Hong Kong &amp; South China<span class="hero-sub">December 2026</span></h1>
+    <h1>Hong Kong, South China & Sichuan<span class="hero-sub">December 2026</span></h1>
     <p class="hero-dates">Dec 23 – Jan 1 · Hong Kong → Shenzhen → Guangzhou? → Chengdu → Chongqing</p>
     <div id="countdown" class="countdown" aria-live="polite" data-departure="2026-12-23T00:00:00"></div>
   </div>
@@ -172,7 +183,7 @@
             <span class="trip-stop-date-num">26</span>
             <span class="trip-stop-date-mon">DEC</span>
           </div>
-          <details class="leg" name="legs" data-route="1,2,3">
+          <details class="leg" name="legs" data-route="3">
             <summary>
               <span class="leg-info">
                 <span class="leg-date-range">Dec 26–29 · Sat–Tue</span>
@@ -193,7 +204,7 @@
             <span class="trip-stop-date-num">29</span>
             <span class="trip-stop-date-mon">DEC</span>
           </div>
-          <details class="leg" name="legs" data-route="3,4">
+          <details class="leg" name="legs" data-route="4">
             <summary>
               <span class="leg-info">
                 <span class="leg-date-range">Dec 29 – Jan 1 · Tue–Fri</span>
@@ -212,10 +223,27 @@
     </div>
   </section>
 
+  <section class="notes">
+    <h2>Good to know</h2>
+    <div class="notes-grid">
+      <div class="note">
+        <h3>Shenzhen vs. Guangzhou</h3>
+        <p>Dec 25's route is still open — either stay in Shenzhen or push on to Guangzhou in the afternoon. Whichever it is decides where the Chengdu flight departs from.</p>
+      </div>
+      <div class="note">
+        <h3>Border crossing</h3>
+        <p>Hong Kong → Shenzhen crosses into mainland China — leave a buffer for immigration and customs on Dec 24.</p>
+      </div>
+      <div class="note">
+        <h3>Chengdu &amp; Chongqing</h3>
+        <p>Day-by-day plans for both cities are still TBD — 3 nights each, details to be added once they're locked in.</p>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer>
-  <p class="leg-nav"><a href="tokyo-hokkaido.html">← Back to Leg 1</a> · <a href="taiwan.html">Next: Taiwan →</a></p>
   <p>Made for the trip. Details TBD — the Shenzhen/Guangzhou split and Chengdu/Chongqing day plans still need to be locked in.</p>
 </footer>
 

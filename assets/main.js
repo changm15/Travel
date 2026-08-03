@@ -8,7 +8,7 @@
     const diff = departure - now;
 
     if (diff <= 0) {
-      el.textContent = "Wheels up — have an amazing trip! ✈️";
+      el.innerHTML = 'Wheels up — have an amazing trip! <svg class="icon" aria-hidden="true"><use href="#icon-plane"/></svg>';
       return;
     }
 
@@ -34,7 +34,7 @@
       const label = el.nextElementSibling;
 
       if (days <= 0) {
-        el.textContent = "✈️";
+        el.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#icon-plane"/></svg>';
         if (label) label.textContent = "underway";
       } else {
         el.textContent = String(days);

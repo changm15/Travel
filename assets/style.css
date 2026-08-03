@@ -78,13 +78,54 @@
 
 /* ---------- Site actions (theme toggle + share) ---------- */
 
-.site-actions {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
+.site-nav {
+  position: sticky;
+  top: 0;
   z-index: 50;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 1.25rem;
+  background: rgba(var(--bg-rgb), 0.75);
+  border-bottom: 1px solid rgba(var(--line-rgb), 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.site-nav-back {
+  display: flex;
+  align-items: center;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--ice-300);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.15s, color 0.15s;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.site-nav-back:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.site-nav-brand {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ice-50);
+  text-decoration: none;
+}
+
+.site-actions {
+  display: flex;
   gap: 0.5rem;
+  flex-shrink: 0;
 }
 
 .site-action-btn {
@@ -117,6 +158,71 @@
   height: 18px;
 }
 
+.leg-switcher {
+  position: sticky;
+  top: 53px;
+  z-index: 49;
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  background: rgba(var(--bg-rgb), 0.75);
+  border-bottom: 1px solid rgba(var(--line-rgb), 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-family: var(--sans);
+}
+
+.leg-switcher-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  color: var(--ice-300);
+  text-decoration: none;
+  border: 1px solid rgba(var(--line-rgb), 0.12);
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.leg-switcher-item:hover {
+  border-color: rgba(var(--accent-rgb), 0.4);
+  color: var(--accent);
+}
+
+.leg-switcher-item.is-current {
+  background: rgba(var(--accent-rgb), 0.14);
+  border-color: rgba(var(--accent-rgb), 0.4);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.leg-switcher-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: currentColor;
+  font-size: 0;
+}
+
+.leg-switcher-num::after {
+  content: attr(data-num);
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: var(--navy-950);
+}
+
+@media (max-width: 560px) {
+  .leg-switcher-item span.leg-switcher-label {
+    display: none;
+  }
+}
+
 .site-toast {
   position: fixed;
   top: 4.2rem;
@@ -141,9 +247,11 @@
 }
 
 @media (max-width: 480px) {
-  .site-actions {
-    top: 0.75rem;
-    right: 0.75rem;
+  .site-nav {
+    padding: 0.6rem 1rem;
+  }
+  .site-nav-back {
+    font-size: 0.76rem;
   }
   .site-action-btn {
     width: 36px;
@@ -209,22 +317,6 @@ main {
   color: var(--accent);
   font-family: var(--sans);
   margin: 0 0 0.75rem;
-}
-
-.back-link {
-  display: inline-block;
-  font-family: var(--sans);
-  font-size: 0.8rem;
-  color: var(--ice-300);
-  text-decoration: none;
-  margin-bottom: 1.5rem;
-  opacity: 0.8;
-  transition: opacity 0.15s, color 0.15s;
-}
-
-.back-link:hover {
-  opacity: 1;
-  color: var(--accent);
 }
 
 .hero h1 {
@@ -889,6 +981,26 @@ main {
   flex-shrink: 0;
 }
 
+.leg-flight {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(var(--accent-warm-rgb), 0.12);
+  border: 1px solid rgba(var(--accent-warm-rgb), 0.28);
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--ice-300);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.leg-flight strong {
+  color: var(--ice-50);
+  font-weight: 700;
+}
+
 .leg-lodging strong {
   color: var(--ice-50);
   font-weight: 700;
@@ -988,17 +1100,3 @@ footer {
   opacity: 0.7;
 }
 
-.leg-nav {
-  opacity: 1;
-  margin-bottom: 1rem;
-}
-
-.leg-nav a {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 700;
-}
-
-.leg-nav a:hover {
-  text-decoration: underline;
-}
