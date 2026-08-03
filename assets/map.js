@@ -15,7 +15,10 @@
 
   const map = L.map(el, { scrollWheelZoom: false });
 
-  const isLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+  const forcedTheme = document.documentElement.getAttribute("data-theme");
+  const isLight =
+    forcedTheme === "light" ||
+    (forcedTheme !== "dark" && window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches);
   const tileTheme = isLight ? "light_all" : "dark_all";
 
   L.tileLayer(`https://{s}.basemaps.cartocdn.com/${tileTheme}/{z}/{x}/{y}{r}.png`, {

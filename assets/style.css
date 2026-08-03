@@ -18,8 +18,11 @@
   color-scheme: dark;
 }
 
+/* Light palette: applied automatically when the OS prefers light and the
+   user hasn't explicitly forced dark via the toggle, OR whenever the user
+   has explicitly picked light. Keep both blocks in sync. */
 @media (prefers-color-scheme: light) {
-  :root {
+  :root:not([data-theme="dark"]) {
     --navy-950: #ffffff;
     --navy-900: #faf7f5;
     --navy-800: #ffffff;
@@ -36,8 +39,110 @@
     color-scheme: light;
   }
 
-  .stop, .trip-map, .trip-map-marker span {
+  :root:not([data-theme="dark"]) .stop,
+  :root:not([data-theme="dark"]) .trip-map,
+  :root:not([data-theme="dark"]) .trip-map-marker span {
     box-shadow: 0 1px 3px rgba(20, 16, 16, 0.06);
+  }
+}
+
+:root[data-theme="light"] {
+  --navy-950: #ffffff;
+  --navy-900: #faf7f5;
+  --navy-800: #ffffff;
+  --navy-700: #f5efeb;
+  --ice-50: #171213;
+  --ice-100: #322b29;
+  --ice-300: #766a64;
+  --accent: #a8102b;
+  --accent-rgb: 168, 16, 43;
+  --accent-warm: #8f6a28;
+  --accent-warm-rgb: 143, 106, 40;
+  --line-rgb: 20, 16, 16;
+  --bg-rgb: 255, 255, 255;
+  color-scheme: light;
+}
+
+:root[data-theme="light"] .stop,
+:root[data-theme="light"] .trip-map,
+:root[data-theme="light"] .trip-map-marker span {
+  box-shadow: 0 1px 3px rgba(20, 16, 16, 0.06);
+}
+
+/* ---------- Site actions (theme toggle + share) ---------- */
+
+.site-actions {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 50;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.site-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(var(--bg-rgb), 0.6);
+  border: 1px solid rgba(var(--line-rgb), 0.15);
+  color: var(--ice-50);
+  cursor: pointer;
+  padding: 0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s;
+}
+
+.site-action-btn:hover {
+  background: var(--navy-700);
+  border-color: rgba(var(--accent-rgb), 0.4);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.site-action-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.site-toast {
+  position: fixed;
+  top: 4.2rem;
+  right: 1rem;
+  background: var(--navy-800);
+  color: var(--ice-50);
+  border: 1px solid rgba(var(--accent-rgb), 0.4);
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  z-index: 60;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.2s, transform 0.2s;
+  pointer-events: none;
+}
+
+.site-toast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .site-actions {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+  .site-action-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .site-toast {
+    top: 3.7rem;
   }
 }
 
