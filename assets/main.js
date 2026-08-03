@@ -46,3 +46,22 @@
   render();
   setInterval(render, 60000);
 })();
+
+(function () {
+  if (!("serviceWorker" in navigator)) return;
+
+  const scripts = document.getElementsByTagName("script");
+  let src = "";
+  for (let i = 0; i < scripts.length; i++) {
+    const s = scripts[i].getAttribute("src") || "";
+    if (s.indexOf("assets/main.js") !== -1) {
+      src = s;
+      break;
+    }
+  }
+  const prefix = src.replace(/assets\/main\.js.*$/, "");
+
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register(prefix + "sw.js").catch(() => {});
+  });
+})();
