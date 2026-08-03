@@ -11,7 +11,11 @@
   if (!stops.length) return;
 
   const latlngs = stops.map((s) => [s.lat, s.lng]);
-  const legs = Array.from(document.querySelectorAll("[data-route]"));
+  // Any element with data-route participates in hover/focus highlighting
+  // (day cards AND the route-strip pills). Only <details class="leg"> is a
+  // valid target for "open + scroll to" (marker clicks, route-strip clicks).
+  const interactive = Array.from(document.querySelectorAll("[data-route]"));
+  const legDetails = interactive.filter((n) => n.tagName === "DETAILS");
 
   const map = L.map(el, { scrollWheelZoom: false });
 
@@ -184,7 +188,7 @@
   }
 
   function focusLegs(indices) {
-    const match = legs.find((node) => parseIndices(node).some((i) => indices.includes(i)));
+    const match = legDetails.find((node) => parseIndices(node).some((i) => indices.includes(i)));
     if (!match) return;
     match.open = true;
     match.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -192,7 +196,7 @@
 
   let openIndices = null;
 
-  legs.forEach((node) => {
+  interactive.forEach((node) => {
     const indices = parseIndices(node);
     if (!indices.length) return;
 
@@ -207,22 +211,28 @@
       else clearHighlight();
     });
 
-    node.addEventListener("toggle", () => {
-      if (node.open) {
-        openIndices = indices;
-        highlight(indices);
-        focusView(indices);
-      } else {
-        const stillOpen = document.querySelector("details.leg[open]");
-        if (stillOpen) {
-          openIndices = parseIndices(stillOpen);
-          highlight(openIndices);
+    if (node.tagName === "DETAILS") {
+      node.addEventListener("toggle", () => {
+        if (node.open) {
+          openIndices = indices;
+          highlight(indices);
+          focusView(indices);
         } else {
-          openIndices = null;
-          clearHighlight();
-          resetView();
+          const stillOpen = document.querySelector("details.leg[open]");
+          if (stillOpen) {
+            openIndices = parseIndices(stillOpen);
+            highlight(openIndices);
+          } else {
+            openIndices = null;
+            clearHighlight();
+            resetView();
+          }
         }
-      }
-    });
+      });
+    } else {
+      // Route-strip pill (or any other non-<details> interactive element):
+      // clicking jumps to and opens the matching leg card.
+      node.addEventListener("click", () => focusLegs(indices));
+    }
   });
 })();
