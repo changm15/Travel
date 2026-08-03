@@ -99,6 +99,7 @@
   color: var(--ice-50);
   cursor: pointer;
   padding: 0;
+  text-decoration: none;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s;
