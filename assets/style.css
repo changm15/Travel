@@ -310,18 +310,46 @@ main {
   margin-top: 0.1rem;
 }
 
-.trip-stop-leg-num {
+.trip-stop-date-num {
   font-family: var(--sans);
   font-weight: 800;
-  font-size: 1.3rem;
+  font-size: 0.64rem;
   color: var(--accent);
-  line-height: 1;
+  line-height: 1.15;
+  text-align: center;
+  padding: 0 4px;
+}
+
+.trip-stop-date-dow {
+  font-family: var(--sans);
+  font-size: 0.52rem;
+  color: var(--ice-300);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.1rem;
 }
 
 .trip-stop:first-child .trip-stop-days-num,
 .trip-stop:first-child .trip-stop-days-label,
-.trip-stop:first-child .trip-stop-leg-num {
+.trip-stop:first-child .trip-stop-date-num,
+.trip-stop:first-child .trip-stop-date-dow {
   color: var(--navy-950);
+}
+
+/* Compact variant: day-by-day legs inside a leg page's itinerary column */
+.trip-timeline.is-compact::before {
+  left: 27px;
+}
+
+.trip-timeline.is-compact .trip-stop {
+  grid-template-columns: 56px 1fr;
+  gap: 1rem;
+  margin-bottom: 0.65rem;
+}
+
+.trip-timeline.is-compact .trip-stop-marker {
+  width: 56px;
+  height: 56px;
 }
 
 .trip-card .leg-highlights {
@@ -492,7 +520,7 @@ main {
   font-size: 0.75rem;
   font-family: var(--sans);
   box-shadow: 0 0 0 3px rgba(var(--bg-rgb), 0.85);
-  transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
+  transition: transform 0.15s, background 0.15s, box-shadow 0.15s, opacity 0.15s;
 }
 
 .trip-map-marker.is-active span {
@@ -500,6 +528,11 @@ main {
   color: #fff;
   transform: scale(1.3);
   box-shadow: 0 0 0 4px rgba(var(--accent-warm-rgb), 0.35);
+}
+
+.trip-map-marker.is-dimmed span {
+  opacity: 0.32;
+  transform: scale(0.85);
 }
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
@@ -548,7 +581,7 @@ main {
 .leg > summary {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
+  gap: 0.75rem;
   padding: 0.85rem 1.1rem;
   cursor: pointer;
   list-style: none;
@@ -559,36 +592,6 @@ main {
 .leg > summary::marker {
   display: none;
   content: "";
-}
-
-.leg-date {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 60px;
-  padding: 0.3rem 0.4rem;
-  border-radius: 9px;
-  background: rgba(var(--accent-rgb), 0.12);
-  flex-shrink: 0;
-}
-
-.leg-date-num {
-  font-family: var(--sans);
-  font-weight: 800;
-  font-size: 0.78rem;
-  color: var(--accent);
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-}
-
-.leg-date-dow {
-  font-family: var(--sans);
-  font-size: 0.62rem;
-  color: var(--ice-300);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-top: 0.1rem;
 }
 
 .leg-city {

@@ -39,6 +39,7 @@
   });
 
   const markers = new Array(stops.length);
+  const uniqueMarkers = [];
   let num = 0;
   groups.forEach((g) => {
     num += 1;
@@ -46,6 +47,7 @@
     const marker = L.marker([g.lat, g.lng], { icon }).addTo(map);
     marker.bindPopup(`<strong>${g.label}</strong>`);
     marker.on("click", () => focusLegs(g.indices));
+    uniqueMarkers.push(marker);
     g.indices.forEach((i) => {
       markers[i] = marker;
     });
@@ -68,30 +70,35 @@
 
   function clearHighlight() {
     if (activePath) activePath.setLatLngs([]);
-    markers.forEach((m) => m && m.getElement() && m.getElement().classList.remove("is-active"));
+    uniqueMarkers.forEach((m) => {
+      if (!m.getElement()) return;
+      m.getElement().classList.remove("is-active", "is-dimmed");
+    });
   }
 
   function highlight(indices) {
     clearHighlight();
     const path = indices.map((i) => latlngs[i]).filter(Boolean);
     if (activePath && path.length > 1) activePath.setLatLngs(path);
-    indices.forEach((i) => {
-      const m = markers[i];
-      if (m && m.getElement()) m.getElement().classList.add("is-active");
+
+    const activeMarkers = new Set(indices.map((i) => markers[i]).filter(Boolean));
+    if (!activeMarkers.size) return;
+    uniqueMarkers.forEach((m) => {
+      if (!m.getElement()) return;
+      m.getElement().classList.add(activeMarkers.has(m) ? "is-active" : "is-dimmed");
     });
   }
 
   function focusView(indices) {
-    if (!indices.length) return;
-    const minI = Math.max(0, Math.min(...indices) - 1);
-    const maxI = Math.min(latlngs.length - 1, Math.max(...indices) + 1);
-    const points = [];
-    for (let i = minI; i <= maxI; i++) points.push(latlngs[i]);
+    // Focus tightly on this leg's own stops — they already encode "this
+    // place and where it connects to," so no extra neighbor padding.
+    const points = indices.map((i) => latlngs[i]).filter(Boolean);
+    if (!points.length) return;
 
     if (points.length > 1) {
-      map.flyToBounds(L.latLngBounds(points), { padding: [56, 56], maxZoom: 10, duration: 0.6 });
+      map.flyToBounds(L.latLngBounds(points), { padding: [70, 70], maxZoom: 12, duration: 0.6 });
     } else {
-      map.flyTo(points[0], 8, { duration: 0.6 });
+      map.flyTo(points[0], 10, { duration: 0.6 });
     }
   }
 

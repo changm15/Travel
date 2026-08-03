@@ -49,12 +49,16 @@
         <p class="trip-map-hint">Click a pin to jump to that day.</p>
       </div>
 
-      <ol class="legs">
+      <ol class="legs trip-timeline is-compact">
 
-        <details class="leg" name="legs" data-route="0">
-          <summary>
-            <span class="leg-date"><span class="leg-date-num">JAN 1–TBD</span><span class="leg-date-dow">Fri–?</span></span>
-            <span class="leg-city">🀄 Taiwan</span>
+        <li class="trip-stop">
+          <div class="trip-stop-marker">
+            <span class="trip-stop-date-num">JAN 1–TBD</span>
+            <span class="trip-stop-date-dow">Fri–?</span>
+          </div>
+          <details class="leg" name="legs" data-route="0">
+            <summary>
+              <span class="leg-city">🀄 Taiwan</span>
             <span class="leg-chevron" aria-hidden="true">›</span>
           </summary>
           <ul class="leg-highlights">
@@ -62,11 +66,16 @@
             <li>Exact length of stay not locked in yet</li>
           </ul>
         </details>
+        </li>
 
-        <details class="leg" name="legs" data-route="0,1,2">
-          <summary>
-            <span class="leg-date"><span class="leg-date-num">JAN 10</span><span class="leg-date-dow">Sun</span></span>
-            <span class="leg-city">✈️ Taiwan → Tokyo → NYC</span>
+        <li class="trip-stop">
+          <div class="trip-stop-marker">
+            <span class="trip-stop-date-num">JAN 10</span>
+            <span class="trip-stop-date-dow">Sun</span>
+          </div>
+          <details class="leg" name="legs" data-route="0,1,2">
+            <summary>
+              <span class="leg-city">✈️ Taiwan → Tokyo → NYC</span>
             <span class="leg-chevron" aria-hidden="true">›</span>
           </summary>
           <ul class="leg-highlights">
@@ -75,6 +84,7 @@
             <li>Trip wraps up back home</li>
           </ul>
         </details>
+        </li>
 
       </ol>
     </div>
