@@ -218,15 +218,22 @@
           highlight(indices);
           focusView(indices);
         } else {
-          const stillOpen = document.querySelector("details.leg[open]");
-          if (stillOpen) {
-            openIndices = parseIndices(stillOpen);
-            highlight(openIndices);
-          } else {
-            openIndices = null;
-            clearHighlight();
-            resetView();
-          }
+          // In an exclusive name="legs" group, closing this one and opening
+          // the next fire as two separate toggle events — this one's close
+          // can arrive before the other's open is applied. Defer the "is
+          // anything still open" check a tick so we don't reset-zoom out
+          // only to immediately zoom back in a moment later.
+          setTimeout(() => {
+            const stillOpen = document.querySelector("details.leg[open]");
+            if (stillOpen) {
+              openIndices = parseIndices(stillOpen);
+              highlight(openIndices);
+            } else {
+              openIndices = null;
+              clearHighlight();
+              resetView();
+            }
+          }, 0);
         }
       });
     } else {
