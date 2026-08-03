@@ -82,6 +82,11 @@
   <section class="itinerary">
     <h2>Day by day</h2>
     <p class="trips-hint">Hover or tap a date to see that leg of the route on the map. Dec 25 route (Shenzhen vs. Guangzhou) is still being decided.</p>
+    <div class="trip-map-legend">
+      <span class="legend-item"><span class="legend-line is-flight"></span>Flight</span>
+      <span class="legend-item"><span class="legend-line is-ground"></span>Train/car</span>
+      <span class="legend-item"><span class="legend-line is-hike"></span>Bus/hike</span>
+    </div>
 
     <div class="itinerary-layout">
 
@@ -93,12 +98,6 @@
           {"label":"Chengdu","lat":30.5728,"lng":104.0668,"mode":"flight"},
           {"label":"Chongqing","lat":29.5630,"lng":106.5516,"mode":"ground"}
         ]'></div>
-        <p class="trip-map-hint">Click a pin to jump to that day.</p>
-        <div class="trip-map-legend">
-          <span class="legend-item"><span class="legend-line is-flight"></span>Flight</span>
-          <span class="legend-item"><span class="legend-line is-ground"></span>Train/car</span>
-          <span class="legend-item"><span class="legend-line is-hike"></span>Bus/hike</span>
-        </div>
       </div>
 
       <ol class="legs trip-timeline is-compact">
@@ -192,7 +191,7 @@
             <span class="trip-stop-date-num">29</span>
             <span class="trip-stop-date-mon">DEC</span>
           </div>
-          <details class="leg" name="legs" data-route="4">
+          <details class="leg" name="legs" data-route="3,4">
             <summary>
               <span class="leg-info">
                 <span class="leg-date-range">Dec 29 – Jan 1 · Tue–Fri</span>

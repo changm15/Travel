@@ -76,6 +76,11 @@
   <section class="itinerary">
     <h2>Day by day</h2>
     <p class="trips-hint">Hover or tap a date to see that leg of the route on the map.</p>
+    <div class="trip-map-legend">
+      <span class="legend-item"><span class="legend-line is-flight"></span>Flight</span>
+      <span class="legend-item"><span class="legend-line is-ground"></span>Train/car</span>
+      <span class="legend-item"><span class="legend-line is-hike"></span>Bus/hike</span>
+    </div>
 
     <div class="itinerary-layout">
 
@@ -89,12 +94,6 @@
           {"label":"Lima (LIM)","lat":-12.0219,"lng":-77.1143,"mode":"flight"},
           {"label":"Toronto (YYZ)","lat":43.6777,"lng":-79.6248,"mode":"flight"}
         ]'></div>
-        <p class="trip-map-hint">Click a pin to jump to that day.</p>
-        <div class="trip-map-legend">
-          <span class="legend-item"><span class="legend-line is-flight"></span>Flight</span>
-          <span class="legend-item"><span class="legend-line is-ground"></span>Train/car</span>
-          <span class="legend-item"><span class="legend-line is-hike"></span>Bus/hike</span>
-        </div>
       </div>
 
       <ol class="legs trip-timeline is-compact">
@@ -127,7 +126,7 @@
             <span class="trip-stop-date-num">3</span>
             <span class="trip-stop-date-mon">SEP</span>
           </div>
-          <details class="leg" name="legs" data-route="2">
+          <details class="leg" name="legs" data-route="1,2">
             <summary>
               <span class="leg-info">
                 <span class="leg-date-range">Sep 3–4 · Thu–Fri</span>
@@ -149,7 +148,7 @@
             <span class="trip-stop-date-num">5</span>
             <span class="trip-stop-date-mon">SEP</span>
           </div>
-          <details class="leg" name="legs" data-route="3">
+          <details class="leg" name="legs" data-route="2,3">
             <summary>
               <span class="leg-info">
                 <span class="leg-date-range">Sep 5–6 · Sat–Sun</span>
