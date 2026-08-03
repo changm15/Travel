@@ -65,11 +65,11 @@
 
   <section class="route" aria-label="Route overview">
     <div class="route-strip">
-      <span class="stop">Taiwan<small>Jan 1 – TBD</small></span>
-      <span class="arrow">✈</span>
-      <span class="stop">HND<small>Tokyo · Jan 10</small></span>
-      <span class="arrow">✈</span>
-      <span class="stop">NYC<small>New York · Jan 10</small></span>
+      <span class="stop" data-route="0" tabindex="0">Taiwan<small>Jan 1 – TBD</small></span>
+      <span class="arrow"><svg class="icon" aria-hidden="true"><use href="#icon-plane"/></svg></span>
+      <span class="stop" data-route="1" tabindex="0">HND<small>Tokyo · Jan 10</small></span>
+      <span class="arrow"><svg class="icon" aria-hidden="true"><use href="#icon-plane"/></svg></span>
+      <span class="stop" data-route="2" tabindex="0">NYC<small>New York · Jan 10</small></span>
     </div>
   </section>
 
@@ -97,13 +97,17 @@
 
         <li class="trip-stop">
           <div class="trip-stop-marker">
-            <span class="trip-stop-date-num">JAN 1–TBD</span>
-            <span class="trip-stop-date-dow">Fri–?</span>
+            <span class="trip-stop-date-num">1</span>
+            <span class="trip-stop-date-mon">JAN</span>
           </div>
           <details class="leg" name="legs" data-route="0">
             <summary>
-              <span class="leg-city">🀄 Taiwan</span>
-            <span class="leg-chevron" aria-hidden="true">›</span>
+              <span class="leg-info">
+                <span class="leg-date-range">Jan 1 – TBD · Fri–?</span>
+                <span class="leg-city"><svg class="icon" aria-hidden="true"><use href="#icon-pagoda"/></svg>Taiwan</span>
+              </span>
+              <span class="leg-lodging"><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg><strong>Taiwan (city TBD)</strong></span>
+              <span class="leg-chevron" aria-hidden="true">›</span>
           </summary>
           <ul class="leg-highlights">
             <li>Coming from Chongqing</li>
@@ -114,13 +118,17 @@
 
         <li class="trip-stop">
           <div class="trip-stop-marker">
-            <span class="trip-stop-date-num">JAN 10</span>
-            <span class="trip-stop-date-dow">Sun</span>
+            <span class="trip-stop-date-num">10</span>
+            <span class="trip-stop-date-mon">JAN</span>
           </div>
           <details class="leg" name="legs" data-route="0,1,2">
             <summary>
-              <span class="leg-city">✈️ Taiwan → Tokyo → NYC</span>
-            <span class="leg-chevron" aria-hidden="true">›</span>
+              <span class="leg-info">
+                <span class="leg-date-range">Jan 10 · Sun</span>
+                <span class="leg-city"><svg class="icon" aria-hidden="true"><use href="#icon-plane"/></svg>Taiwan → Tokyo → NYC</span>
+              </span>
+              <span class="leg-lodging"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg><strong>Home</strong></span>
+              <span class="leg-chevron" aria-hidden="true">›</span>
           </summary>
           <ul class="leg-highlights">
             <li>Fly Taiwan → Tokyo</li>

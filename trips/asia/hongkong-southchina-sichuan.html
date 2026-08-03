@@ -65,15 +65,15 @@
 
   <section class="route" aria-label="Route overview">
     <div class="route-strip">
-      <span class="stop">HKG<small>Hong Kong · Dec 23</small></span>
-      <span class="arrow">→</span>
-      <span class="stop">SZX<small>Shenzhen · Dec 24</small></span>
-      <span class="arrow">→</span>
-      <span class="stop">CAN<small>Guangzhou? · Dec 25</small></span>
-      <span class="arrow">✈</span>
-      <span class="stop">CTU<small>Chengdu · Dec 26</small></span>
-      <span class="arrow">→</span>
-      <span class="stop">CKG<small>Chongqing · Dec 29</small></span>
+      <span class="stop" data-route="0" tabindex="0">HKG<small>Hong Kong · Dec 23</small></span>
+      <span class="arrow"><svg class="icon" aria-hidden="true"><use href="#icon-city"/></svg></span>
+      <span class="stop" data-route="1" tabindex="0">SZX<small>Shenzhen · Dec 24</small></span>
+      <span class="arrow"><svg class="icon" aria-hidden="true"><use href="#icon-city"/></svg></span>
+      <span class="stop" data-route="2" tabindex="0">CAN<small>Guangzhou? · Dec 25</small></span>
+      <span class="arrow"><svg class="icon" aria-hidden="true"><use href="#icon-plane"/></svg></span>
+      <span class="stop" data-route="3" tabindex="0">CTU<small>Chengdu · Dec 26</small></span>
+      <span class="arrow"><svg class="icon" aria-hidden="true"><use href="#icon-city"/></svg></span>
+      <span class="stop" data-route="4" tabindex="0">CKG<small>Chongqing · Dec 29</small></span>
     </div>
   </section>
 
@@ -103,13 +103,17 @@
 
         <li class="trip-stop">
           <div class="trip-stop-marker">
-            <span class="trip-stop-date-num">DEC 23</span>
-            <span class="trip-stop-date-dow">Wed</span>
+            <span class="trip-stop-date-num">23</span>
+            <span class="trip-stop-date-mon">DEC</span>
           </div>
           <details class="leg" name="legs" data-route="0">
             <summary>
-              <span class="leg-city">🏨 Hong Kong</span>
-            <span class="leg-chevron" aria-hidden="true">›</span>
+              <span class="leg-info">
+                <span class="leg-date-range">Dec 23 · Wed</span>
+                <span class="leg-city"><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg>Hong Kong</span>
+              </span>
+              <span class="leg-lodging"><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg><strong>Hong Kong</strong></span>
+              <span class="leg-chevron" aria-hidden="true">›</span>
           </summary>
           <ul class="leg-highlights">
             <li>Hotel in HKG</li>
@@ -120,13 +124,17 @@
 
         <li class="trip-stop">
           <div class="trip-stop-marker">
-            <span class="trip-stop-date-num">DEC 24</span>
-            <span class="trip-stop-date-dow">Thu</span>
+            <span class="trip-stop-date-num">24</span>
+            <span class="trip-stop-date-mon">DEC</span>
           </div>
           <details class="leg" name="legs" data-route="0,1">
             <summary>
-              <span class="leg-city">🍽️ Hong Kong → Shenzhen</span>
-            <span class="leg-chevron" aria-hidden="true">›</span>
+              <span class="leg-info">
+                <span class="leg-date-range">Dec 24 · Thu</span>
+                <span class="leg-city"><svg class="icon" aria-hidden="true"><use href="#icon-dining"/></svg>Hong Kong → Shenzhen</span>
+              </span>
+              <span class="leg-lodging"><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg><strong>Shenzhen</strong></span>
+              <span class="leg-chevron" aria-hidden="true">›</span>
           </summary>
           <ul class="leg-highlights">
             <li>Maybe a buffet with family, or something light</li>
@@ -137,13 +145,17 @@
 
         <li class="trip-stop">
           <div class="trip-stop-marker">
-            <span class="trip-stop-date-num">DEC 25</span>
-            <span class="trip-stop-date-dow">Fri</span>
+            <span class="trip-stop-date-num">25</span>
+            <span class="trip-stop-date-mon">DEC</span>
           </div>
           <details class="leg" name="legs" data-route="1,2">
             <summary>
-              <span class="leg-city">🌆 Shenzhen</span>
-            <span class="leg-chevron" aria-hidden="true">›</span>
+              <span class="leg-info">
+                <span class="leg-date-range">Dec 25 · Fri</span>
+                <span class="leg-city"><svg class="icon" aria-hidden="true"><use href="#icon-city"/></svg>Shenzhen</span>
+              </span>
+              <span class="leg-lodging"><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg><strong>Shenzhen or Guangzhou (TBD)</strong></span>
+              <span class="leg-chevron" aria-hidden="true">›</span>
           </summary>
           <ul class="leg-highlights">
             <li>Explore Shenzhen</li>
@@ -154,13 +166,17 @@
 
         <li class="trip-stop">
           <div class="trip-stop-marker">
-            <span class="trip-stop-date-num">DEC 26–29</span>
-            <span class="trip-stop-date-dow">Sat–Tue</span>
+            <span class="trip-stop-date-num">26</span>
+            <span class="trip-stop-date-mon">DEC</span>
           </div>
           <details class="leg" name="legs" data-route="1,2,3">
             <summary>
-              <span class="leg-city">🐼 Chengdu</span>
-            <span class="leg-chevron" aria-hidden="true">›</span>
+              <span class="leg-info">
+                <span class="leg-date-range">Dec 26–29 · Sat–Tue</span>
+                <span class="leg-city"><svg class="icon" aria-hidden="true"><use href="#icon-panda"/></svg>Chengdu</span>
+              </span>
+              <span class="leg-lodging"><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg><strong>Chengdu</strong></span>
+              <span class="leg-chevron" aria-hidden="true">›</span>
           </summary>
           <ul class="leg-highlights">
             <li>Fly in from Guangzhou or Shenzhen, depending where the 25th lands</li>
@@ -171,13 +187,17 @@
 
         <li class="trip-stop">
           <div class="trip-stop-marker">
-            <span class="trip-stop-date-num">DEC 29–JAN 1</span>
-            <span class="trip-stop-date-dow">Tue–Fri</span>
+            <span class="trip-stop-date-num">29</span>
+            <span class="trip-stop-date-mon">DEC</span>
           </div>
           <details class="leg" name="legs" data-route="3,4">
             <summary>
-              <span class="leg-city">🌶️ Chongqing</span>
-            <span class="leg-chevron" aria-hidden="true">›</span>
+              <span class="leg-info">
+                <span class="leg-date-range">Dec 29 – Jan 1 · Tue–Fri</span>
+                <span class="leg-city"><svg class="icon" aria-hidden="true"><use href="#icon-flame"/></svg>Chongqing</span>
+              </span>
+              <span class="leg-lodging"><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg><strong>Chongqing</strong></span>
+              <span class="leg-chevron" aria-hidden="true">›</span>
           </summary>
           <ul class="leg-highlights">
             <li>3 nights in Chongqing — details TBD</li>

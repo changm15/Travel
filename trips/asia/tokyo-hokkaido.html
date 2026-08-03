@@ -65,19 +65,19 @@
 
   <section class="route" aria-label="Route overview">
     <div class="route-strip">
-      <span class="stop">ORD<small>Chicago · Dec 18</small></span>
-      <span class="arrow">✈</span>
-      <span class="stop">HND<small>Tokyo · Dec 19</small></span>
-      <span class="arrow">✈</span>
-      <span class="stop">CTS<small>Sapporo · Dec 20</small></span>
-      <span class="arrow">🚌</span>
-      <span class="stop">Noboribetsu<small>Dec 21</small></span>
-      <span class="arrow">🚃</span>
-      <span class="stop">Hakodate<small>Dec 22</small></span>
-      <span class="arrow">✈</span>
-      <span class="stop">Tokyo<small>Dec 23</small></span>
-      <span class="arrow">✈</span>
-      <span class="stop">HKG<small>Hong Kong · Dec 23</small></span>
+      <span class="stop" data-route="0" tabindex="0">ORD<small>Chicago · Dec 18</small></span>
+      <span class="arrow"><svg class="icon" aria-hidden="true"><use href="#icon-plane"/></svg></span>
+      <span class="stop" data-route="1" tabindex="0">HND<small>Tokyo · Dec 19</small></span>
+      <span class="arrow"><svg class="icon" aria-hidden="true"><use href="#icon-plane"/></svg></span>
+      <span class="stop" data-route="2" tabindex="0">CTS<small>Sapporo · Dec 20</small></span>
+      <span class="arrow"><svg class="icon" aria-hidden="true"><use href="#icon-city"/></svg></span>
+      <span class="stop" data-route="3" tabindex="0">Noboribetsu<small>Dec 21</small></span>
+      <span class="arrow"><svg class="icon" aria-hidden="true"><use href="#icon-city"/></svg></span>
+      <span class="stop" data-route="4" tabindex="0">Hakodate<small>Dec 22</small></span>
+      <span class="arrow"><svg class="icon" aria-hidden="true"><use href="#icon-plane"/></svg></span>
+      <span class="stop" data-route="5" tabindex="0">Tokyo<small>Dec 23</small></span>
+      <span class="arrow"><svg class="icon" aria-hidden="true"><use href="#icon-plane"/></svg></span>
+      <span class="stop" data-route="6" tabindex="0">HKG<small>Hong Kong · Dec 23</small></span>
     </div>
   </section>
 
@@ -109,13 +109,17 @@
 
         <li class="trip-stop">
           <div class="trip-stop-marker">
-            <span class="trip-stop-date-num">DEC 18</span>
-            <span class="trip-stop-date-dow">Fri</span>
+            <span class="trip-stop-date-num">18</span>
+            <span class="trip-stop-date-mon">DEC</span>
           </div>
           <details class="leg" name="legs" data-route="0">
             <summary>
-              <span class="leg-city">✈️ Chicago</span>
-            <span class="leg-chevron" aria-hidden="true">›</span>
+              <span class="leg-info">
+                <span class="leg-date-range">Dec 18 · Fri</span>
+                <span class="leg-city"><svg class="icon" aria-hidden="true"><use href="#icon-plane"/></svg>Chicago</span>
+              </span>
+              <span class="leg-lodging"><svg class="icon" aria-hidden="true"><use href="#icon-plane"/></svg><strong>In transit</strong></span>
+              <span class="leg-chevron" aria-hidden="true">›</span>
           </summary>
           <ul class="leg-highlights">
             <li>Depart O'Hare (ORD)</li>
@@ -126,13 +130,17 @@
 
         <li class="trip-stop">
           <div class="trip-stop-marker">
-            <span class="trip-stop-date-num">DEC 19</span>
-            <span class="trip-stop-date-dow">Sat</span>
+            <span class="trip-stop-date-num">19</span>
+            <span class="trip-stop-date-mon">DEC</span>
           </div>
           <details class="leg" name="legs" data-route="0,1">
             <summary>
-              <span class="leg-city">🗼 Tokyo</span>
-            <span class="leg-chevron" aria-hidden="true">›</span>
+              <span class="leg-info">
+                <span class="leg-date-range">Dec 19 · Sat</span>
+                <span class="leg-city"><svg class="icon" aria-hidden="true"><use href="#icon-city"/></svg>Tokyo</span>
+              </span>
+              <span class="leg-lodging"><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg><strong>Tokyo</strong></span>
+              <span class="leg-chevron" aria-hidden="true">›</span>
           </summary>
           <ul class="leg-highlights">
             <li>Late-night landing</li>
@@ -144,13 +152,17 @@
 
         <li class="trip-stop">
           <div class="trip-stop-marker">
-            <span class="trip-stop-date-num">DEC 20</span>
-            <span class="trip-stop-date-dow">Sun</span>
+            <span class="trip-stop-date-num">20</span>
+            <span class="trip-stop-date-mon">DEC</span>
           </div>
           <details class="leg" name="legs" data-route="1,2">
             <summary>
-              <span class="leg-city">❄️ Sapporo</span>
-            <span class="leg-chevron" aria-hidden="true">›</span>
+              <span class="leg-info">
+                <span class="leg-date-range">Dec 20 · Sun</span>
+                <span class="leg-city"><svg class="icon" aria-hidden="true"><use href="#icon-snowflake"/></svg>Sapporo</span>
+              </span>
+              <span class="leg-lodging"><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg><strong>Sapporo</strong></span>
+              <span class="leg-chevron" aria-hidden="true">›</span>
           </summary>
           <ul class="leg-highlights">
             <li>Odori Park</li>
@@ -163,13 +175,17 @@
 
         <li class="trip-stop">
           <div class="trip-stop-marker">
-            <span class="trip-stop-date-num">DEC 21</span>
-            <span class="trip-stop-date-dow">Mon</span>
+            <span class="trip-stop-date-num">21</span>
+            <span class="trip-stop-date-mon">DEC</span>
           </div>
           <details class="leg" name="legs" data-route="2,3">
             <summary>
-              <span class="leg-city">♨️ Noboribetsu</span>
-            <span class="leg-chevron" aria-hidden="true">›</span>
+              <span class="leg-info">
+                <span class="leg-date-range">Dec 21 · Mon</span>
+                <span class="leg-city"><svg class="icon" aria-hidden="true"><use href="#icon-onsen"/></svg>Noboribetsu</span>
+              </span>
+              <span class="leg-lodging"><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg><strong>Noboribetsu</strong></span>
+              <span class="leg-chevron" aria-hidden="true">›</span>
           </summary>
           <ul class="leg-highlights">
             <li>Jigokudani ("Hell Valley")</li>
@@ -180,13 +196,17 @@
 
         <li class="trip-stop">
           <div class="trip-stop-marker">
-            <span class="trip-stop-date-num">DEC 22</span>
-            <span class="trip-stop-date-dow">Tue</span>
+            <span class="trip-stop-date-num">22</span>
+            <span class="trip-stop-date-mon">DEC</span>
           </div>
           <details class="leg" name="legs" data-route="3,4">
             <summary>
-              <span class="leg-city">🌃 Hakodate</span>
-            <span class="leg-chevron" aria-hidden="true">›</span>
+              <span class="leg-info">
+                <span class="leg-date-range">Dec 22 · Tue</span>
+                <span class="leg-city"><svg class="icon" aria-hidden="true"><use href="#icon-city"/></svg>Hakodate</span>
+              </span>
+              <span class="leg-lodging"><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg><strong>Hakodate</strong></span>
+              <span class="leg-chevron" aria-hidden="true">›</span>
           </summary>
           <ul class="leg-highlights">
             <li>Morning seafood market</li>
@@ -198,13 +218,17 @@
 
         <li class="trip-stop">
           <div class="trip-stop-marker">
-            <span class="trip-stop-date-num">DEC 23</span>
-            <span class="trip-stop-date-dow">Wed</span>
+            <span class="trip-stop-date-num">23</span>
+            <span class="trip-stop-date-mon">DEC</span>
           </div>
           <details class="leg" name="legs" data-route="4,5,6">
             <summary>
-              <span class="leg-city">✈️ Tokyo → Hong Kong</span>
-            <span class="leg-chevron" aria-hidden="true">›</span>
+              <span class="leg-info">
+                <span class="leg-date-range">Dec 23 · Wed</span>
+                <span class="leg-city"><svg class="icon" aria-hidden="true"><use href="#icon-plane"/></svg>Tokyo → Hong Kong</span>
+              </span>
+              <span class="leg-lodging"><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg><strong>Hong Kong</strong></span>
+              <span class="leg-chevron" aria-hidden="true">›</span>
           </summary>
           <ul class="leg-highlights">
             <li>Fly Hakodate back to Tokyo</li>
