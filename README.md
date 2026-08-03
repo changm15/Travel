@@ -1,28 +1,31 @@
 # Travel
 
-Hub site for trip itineraries. Static, no build step.
+Hub site for trip itineraries. Static, no build step. Every trip follows the same shape: a top-level hub → a hub page per trip → a page per leg.
 
-- `index.html` — top-level hub. Upcoming trips sorted soonest-first, then a Past trips section.
-- `trips/peru.html` — Peru, Sep 2–9, 2026 (single trip, no legs).
-- `trips/asia/index.html` — Asia trip hub, Dec 18, 2026 – Jan 10, 2027. Lists each leg.
+- `index.html` — top-level hub. Upcoming trips in a chronological timeline (soonest first, live days-until countdown), then a Past trips section.
+- `trips/peru/index.html` — Peru trip hub, Sep 2–9, 2026. One leg so far.
+  - `trips/peru/lima-cusco-inca-trail.html` — Leg 1: Lima, Cusco, the Inca Trail.
+- `trips/asia/index.html` — Asia trip hub, Dec 18, 2026 – Jan 10, 2027.
   - `trips/asia/tokyo-hokkaido.html` — Leg 1: Japan.
   - `trips/asia/hongkong-southchina-sichuan.html` — Leg 2: Hong Kong, Shenzhen/Guangzhou, Chengdu, Chongqing.
   - `trips/asia/taiwan.html` — Leg 3: Taiwan, then home via Tokyo.
-- `assets/style.css` — shared styles.
-- `assets/main.js` — countdown widget. Looks for `#countdown[data-departure]` (an ISO date string) and counts down to it; does nothing if the attribute is missing.
-- `assets/map.js` — interactive route map (Leaflet + CARTO dark tiles, no API key). Looks for `#trip-map[data-stops]`, a JSON array of `{label, lat, lng}` points in route order. Draws the full route, then highlights the relevant segment when you hover/focus/open a `[data-route="i,j,..."]` element elsewhere on the page (indices into the stops array), and opens+scrolls to the matching leg when you click a map pin.
+- `assets/style.css` — shared styles. Colors are CSS variables in `:root`, overridden in a `@media (prefers-color-scheme: light)` block — change a palette by editing those two blocks, not individual rules.
+- `assets/main.js` — countdown widgets. `#countdown[data-departure]` gets the hero "X days, Y hours" text. Any `.trip-stop-days-num[data-departure]` (used in the timeline markers) gets a live whole-days count.
+- `assets/map.js` — interactive route map (Leaflet + CARTO tiles, no API key, dark/light tile set follows `prefers-color-scheme`). Looks for `#trip-map[data-stops]`, a JSON array of `{label, lat, lng}` points in route order. Draws the full route, then on hover/focus highlights the relevant segment for a `[data-route="i,j,..."]` element elsewhere on the page (indices into the stops array). Opening a `<details class="leg">` (click, or via a map pin click) also flies the map in to focus on that stop plus its immediate neighbor; closing the last open leg flies back out to the full route.
 
 ## Page patterns
 
-**Single trip, no legs yet** (like `trips/peru.html`): hero + route-strip + itinerary (map + `<details class="leg">` list) + optional notes. Countdown only if a real date is known.
+**Trip hub** (`trips/<trip>/index.html`): hero + a `<ol class="trip-timeline">` of `<li class="trip-stop">` entries, one per leg, each with a `.trip-stop-marker` (leg number, or a `.trip-stop-days-num[data-departure]` for live countdown on the top-level home page) and a `.trip-card` link into that leg's page. Same component as the home page's Upcoming list.
 
-**Multi-leg trip** (like the Asia trip): a hub page (`trips/asia/index.html`) with trip-cards linking to each leg, and each leg page is its own single-trip-style page with `data-route` indices matching its own map's stops.
+**Leg page** (e.g. `trips/asia/tokyo-hokkaido.html`): hero + route-strip (quick glance, with dates) + itinerary (map + `<ol class="legs">` of `<details class="leg" name="legs" data-route="i,j">`) + optional notes. `name="legs"` makes the day cards an exclusive accordion (opening one closes the others) — keep that attribute on every `<details class="leg">` on a page. Keep highlights terse: 2–4 short bullets, not paragraphs. If dates/route aren't locked in, say so directly ("TBD") rather than guessing.
 
-**Adding a leg to an itinerary:**
-1. Add a stop object to the map's `data-stops` JSON (if it's a new place).
-2. Add a `<details class="leg" data-route="i,j">` block to the `.legs` list, where `i,j` are the stop indices this day's segment touches. Keep it terse: date, city, 2–4 short highlights — not paragraphs.
-3. If dates/route aren't locked in, say so directly (e.g. "TBD") rather than guessing.
+## Adding to the site
 
-**Adding a new top-level trip:**
-1. Copy `trips/peru.html` (single trip) as a starting point, or `trips/asia/` (multi-leg) if it'll have legs.
-2. Add a `.trip-card` to `index.html`, in the Upcoming section, ordered soonest-first. Move it to Past trips once it's over.
+**New leg on an existing trip:**
+1. Add a stop object to that leg's map `data-stops` JSON (if it's a new place).
+2. Add a `<details class="leg" name="legs" data-route="i,j">` block, where `i,j` are stop indices this day's segment touches.
+3. Add a `.trip-stop` entry (with a leg-number marker) to that trip's hub `trip-timeline`.
+
+**New top-level trip:**
+1. Copy `trips/peru/` as a starting point (rename the folder and its one leg file).
+2. Add a `.trip-stop` entry to `index.html`'s Upcoming timeline, with a `data-departure` on the marker, positioned by date (soonest first). Move it to Past trips once it's over.

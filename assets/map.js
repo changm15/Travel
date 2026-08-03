@@ -15,7 +15,10 @@
 
   const map = L.map(el, { scrollWheelZoom: false });
 
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+  const isLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+  const tileTheme = isLight ? "light_all" : "dark_all";
+
+  L.tileLayer(`https://{s}.basemaps.cartocdn.com/${tileTheme}/{z}/{x}/{y}{r}.png`, {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
     subdomains: "abcd",
@@ -24,8 +27,8 @@
 
   let activePath = null;
   if (latlngs.length > 1) {
-    L.polyline(latlngs, { color: "#3d5578", weight: 3, opacity: 0.9 }).addTo(map);
-    activePath = L.polyline([], { color: "#7fd4ff", weight: 4, opacity: 0.95 }).addTo(map);
+    L.polyline(latlngs, { color: isLight ? "#c9beb8" : "#5a4d4a", weight: 3, opacity: 0.9 }).addTo(map);
+    activePath = L.polyline([], { color: "#d4213f", weight: 4, opacity: 0.95 }).addTo(map);
   }
 
   const groups = new Map();
@@ -48,8 +51,10 @@
     });
   });
 
-  if (latlngs.length > 1) {
-    map.fitBounds(L.latLngBounds(latlngs), { padding: [28, 28] });
+  const overviewBounds = latlngs.length > 1 ? L.latLngBounds(latlngs) : null;
+
+  if (overviewBounds) {
+    map.fitBounds(overviewBounds, { padding: [28, 28] });
   } else {
     map.setView(latlngs[0], 5);
   }
@@ -61,13 +66,13 @@
       .filter((n) => !Number.isNaN(n));
   }
 
-  function clearActive() {
+  function clearHighlight() {
     if (activePath) activePath.setLatLngs([]);
     markers.forEach((m) => m && m.getElement() && m.getElement().classList.remove("is-active"));
   }
 
-  function activate(indices) {
-    clearActive();
+  function highlight(indices) {
+    clearHighlight();
     const path = indices.map((i) => latlngs[i]).filter(Boolean);
     if (activePath && path.length > 1) activePath.setLatLngs(path);
     indices.forEach((i) => {
@@ -76,23 +81,68 @@
     });
   }
 
+  function focusView(indices) {
+    if (!indices.length) return;
+    const minI = Math.max(0, Math.min(...indices) - 1);
+    const maxI = Math.min(latlngs.length - 1, Math.max(...indices) + 1);
+    const points = [];
+    for (let i = minI; i <= maxI; i++) points.push(latlngs[i]);
+
+    if (points.length > 1) {
+      map.flyToBounds(L.latLngBounds(points), { padding: [56, 56], maxZoom: 10, duration: 0.6 });
+    } else {
+      map.flyTo(points[0], 8, { duration: 0.6 });
+    }
+  }
+
+  function resetView() {
+    if (overviewBounds) {
+      map.flyToBounds(overviewBounds, { padding: [28, 28], duration: 0.6 });
+    } else {
+      map.flyTo(latlngs[0], 5, { duration: 0.6 });
+    }
+  }
+
   function focusLegs(indices) {
     const match = legs.find((node) => parseIndices(node).some((i) => indices.includes(i)));
-    activate(indices);
     if (!match) return;
     match.open = true;
     match.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
+  let openIndices = null;
+
   legs.forEach((node) => {
     const indices = parseIndices(node);
     if (!indices.length) return;
-    node.addEventListener("mouseenter", () => activate(indices));
-    node.addEventListener("mouseleave", clearActive);
-    node.addEventListener("focus", () => activate(indices));
-    node.addEventListener("blur", clearActive);
+
+    node.addEventListener("mouseenter", () => highlight(indices));
+    node.addEventListener("mouseleave", () => {
+      if (openIndices) highlight(openIndices);
+      else clearHighlight();
+    });
+    node.addEventListener("focus", () => highlight(indices));
+    node.addEventListener("blur", () => {
+      if (openIndices) highlight(openIndices);
+      else clearHighlight();
+    });
+
     node.addEventListener("toggle", () => {
-      if (node.open) activate(indices);
+      if (node.open) {
+        openIndices = indices;
+        highlight(indices);
+        focusView(indices);
+      } else {
+        const stillOpen = document.querySelector("details.leg[open]");
+        if (stillOpen) {
+          openIndices = parseIndices(stillOpen);
+          highlight(openIndices);
+        } else {
+          openIndices = null;
+          clearHighlight();
+          resetView();
+        }
+      }
     });
   });
 })();
